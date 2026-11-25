@@ -1,0 +1,66 @@
+name: Update YouTube Stats
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch YouTube stats and update README
+        env:
+          API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          CHANNEL_ID: "UCQnLCzXCtC8o5pPoT59qQcQ"
+        run: |
+          python3 -c '
+          import json, os, re, urllib.parse, urllib.request
+
+          channel_id = os.environ["CHANNEL_ID"]
+          api_key = os.environ["API_KEY"]
+          url = (
+              f"https://www.googleapis.com/youtube/v3/channels"
+              f"?part=statistics&id={channel_id}&key={api_key}"
+          )
+          data = json.loads(urllib.request.urlopen(url).read().decode())
+          stats = data["items"][0]["statistics"]
+          subs = f"{int(stats[\"subscriberCount\"]):,}".replace(",", " ")
+          views = f"{int(stats[\"viewCount\"]):,}".replace(",", " ")
+
+          subs_encoded = urllib.parse.quote(subs)
+          views_encoded = urllib.parse.quote(views)
+          yt_link = f"https://www.youtube.com/channel/{channel_id}"
+
+          block = (
+              "<!-- YT_STATS_START -->\n"
+              f"[![Subscribers](https://img.shields.io/badge/Subscribers-{subs_encoded}-red?style=for-the-badge&logo=youtube)]({yt_link}) "
+              f"[![Views](https://img.shields.io/badge/Views-{views_encoded}-blue?style=for-the-badge&logo=youtube)]({yt_link})\n"
+              "<!-- YT_STATS_END -->"
+          )
+
+          with open("README.md", "r", encoding="utf-8") as f:
+              readme = f.read()
+
+          pattern = r"<!-- YT_STATS_START -->.*?<!-- YT_STATS_END -->"
+          if re.search(pattern, readme, flags=re.S):
+              new_readme = re.sub(pattern, block, readme, flags=re.S)
+          else:
+              new_readme = readme.rstrip() + "\n\n" + block + "\n"
+
+          with open("README.md", "w", encoding="utf-8") as f:
+              f.write(new_readme)
+          '
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --staged --quiet || (git commit -m "chore: update YouTube stats" && git push)

@@ -252,11 +252,18 @@ def main() -> None:
     mode = os.environ.get("MODE", "render")
     last_uci = state["moves"][-1]["uci"] if state["moves"] else None
 
+    reset_requested = os.environ.get("RESET_GAME", "").strip().lower() in {"true", "1", "yes"}
+
     if mode == "render":
+        if reset_requested:
+            state["fen"] = chess.STARTING_FEN
+            state["moves"] = []
+            board = chess.Board(chess.STARTING_FEN)
+            last_uci = None
         board_url = render_board_image(board, state, last_uci)
         save_state(state)
         update_readme(render_section(state, board_url))
-        write_output("ok", "Board rendered.")
+        write_output("ok", "Game reset to starting position." if reset_requested else "Board rendered.")
         return
 
     actor = os.environ.get("ISSUE_AUTHOR", "").strip()

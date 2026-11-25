@@ -8,6 +8,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 OWNER = "Krzys3n"
 REPO = "Krzys3n"
+ALLOW_OWNER_PLAY_WHITE = True  # Zmień na False po zakończeniu testów
 STATE_PATH = Path("chess_games/state.json")
 BOARD_IMG_PATH = Path("chess_images/board.png")
 README_PATH = Path("README.md")
@@ -239,7 +240,7 @@ def main() -> None:
         write_output("invalid", f"Teraz kolej czarnych — ruch może wykonać tylko @{OWNER}.")
         return
 
-    if board.turn == chess.WHITE and actor.lower() == OWNER.lower():
+    if board.turn == chess.WHITE and actor.lower() == OWNER.lower() and not ALLOW_OWNER_PLAY_WHITE:
         write_output("invalid", f"@{OWNER} gra czarnymi — białymi grają odwiedzający!")
         return
 
@@ -265,7 +266,7 @@ def main() -> None:
             msg = f"🎉 Szach-mat! Społeczność (ostatni ruch: @{actor}) wygrywa! Rozpoczynamy nową partię."
         elif outcome and outcome.winner == chess.BLACK:
             state["score"]["owner"] += 1
-            msg = f"👑 Szach-mat! @{OWNER} wygrywa! Rozpoczynamy nową partię."
+            msg = f"👑 Szach-mat! @{OWNER} wygrywa! Rozpoczęto nową partię."
         else:
             state["score"]["draws"] += 1
             msg = "🤝 Remis! Rozpoczynamy nową partię."

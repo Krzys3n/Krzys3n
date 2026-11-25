@@ -1,4 +1,4 @@
-### Hi there! 👋
+### Hello there! 👋
 
 YouTube creator | Chess player | Gamer | Tech enthusiast
 

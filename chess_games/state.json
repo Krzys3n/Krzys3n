@@ -1,5 +1,5 @@
 {
-  "fen": "rnbqkbnr/ppp1pppp/8/3p4/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2",
+  "fen": "rnbqkbnr/ppp1pppp/8/3pP3/8/8/PPPP1PPP/RNBQKBNR b KQkq - 0 2",
   "moves": [
     {
       "uci": "e2e4",
@@ -8,10 +8,14 @@
     {
       "uci": "d7d5",
       "player": "Krzys3n"
+    },
+    {
+      "uci": "e4e5",
+      "player": "Krzys3n"
     }
   ],
   "leaderboard": {
-    "Krzys3n": 2
+    "Krzys3n": 3
   },
   "score": {
     "community": 0,

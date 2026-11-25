@@ -25,15 +25,18 @@ def main() -> None:
     stats = items[0]["statistics"]
     subs = f"{int(stats['subscriberCount']):,}".replace(",", " ")
     views = f"{int(stats['viewCount']):,}".replace(",", " ")
+    videos = f"{int(stats['videoCount']):,}".replace(",", " ")
 
     subs_encoded = urllib.parse.quote(subs)
     views_encoded = urllib.parse.quote(views)
+    videos_encoded = urllib.parse.quote(videos)
     yt_link = f"https://www.youtube.com/channel/{channel_id}"
 
     block = (
         "<!-- YT_STATS_START -->\n"
         f"[![Subscribers](https://img.shields.io/badge/Subscribers-{subs_encoded}-red?style=for-the-badge&logo=youtube)]({yt_link}) "
-        f"[![Views](https://img.shields.io/badge/Views-{views_encoded}-blue?style=for-the-badge&logo=youtube)]({yt_link})\n"
+        f"[![Views](https://img.shields.io/badge/Views-{views_encoded}-blue?style=for-the-badge&logo=youtube)]({yt_link}) "
+        f"[![Videos](https://img.shields.io/badge/Videos-{videos_encoded}-green?style=for-the-badge&logo=youtube)]({yt_link})\n"
         "<!-- YT_STATS_END -->"
     )
 

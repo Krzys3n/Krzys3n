@@ -199,12 +199,9 @@ def render_section(state: dict) -> str:
         "",
         f"![Wooden Chessboard]({board_url})",
         "",
-        "<details>",
-        "<summary><b>🎯 Choose a move (FROM → TO)</b></summary>",
+        "#### 🎯 Choose a move (FROM → TO)",
         "",
         render_moves_table(board),
-        "",
-        "</details>",
         "",
         "#### How to play",
         f"Click a move link in **FROM → TO** to open a pre-filled Issue, then click **Create new issue**. GitHub Actions validates the move, updates the board, and closes the Issue. *(Inspired by [timburgan](https://github.com/timburgan)).*",
@@ -218,7 +215,6 @@ def render_section(state: dict) -> str:
         render_leaderboard(state),
         "<!-- CHESS_END -->",
     ])
-
 
 def update_readme(section: str) -> None:
     readme = README_PATH.read_text(encoding="utf-8") if README_PATH.exists() else ""

@@ -9,50 +9,50 @@ YouTube creator | Chess player | Gamer | Tech enthusiast
 ---
 
 <!-- CHESS_START -->
-### ♟️ Community Chess — Ty (czarne) vs Społeczność (białe)
+### ♟️ Community Chess — Krzys3n vs Guests
 
-👋 **Twój ruch! Zagraj białymi (dół planszy).** Każdy gość może wykonać następny ruch.
+⬛ **@Krzys3n's turn (Black — top).** Restricted to the profile owner.
 
-**Wynik partii:** Społeczność **0** : **0** @Krzys3n *(Remisy: 0)*
+**Series score:** Krzys3n **0** : **0** Guests *(Draws: 0)*
 
-![Drewniana szachownica](chess_images/board.png?raw=true)
+![Wooden Chessboard](chess_images/board.png?v=7)
 
 <details>
-<summary><b>🎯 Wybierz ruch (FROM → TO)</b></summary>
+<summary><b>🎯 Choose a move (FROM → TO)</b></summary>
 
-| FROM | TO - kliknij ruch |
+| FROM | TO - click a move |
 | :---: | :--- |
-| **A2** | [A3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20a2a3&body=Ruch%20w%20szachach%3A%20%60a2a3%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.), [A4](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20a2a4&body=Ruch%20w%20szachach%3A%20%60a2a4%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.) |
-| **B1** | [C3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20b1c3&body=Ruch%20w%20szachach%3A%20%60b1c3%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.), [A3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20b1a3&body=Ruch%20w%20szachach%3A%20%60b1a3%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.) |
-| **B2** | [B3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20b2b3&body=Ruch%20w%20szachach%3A%20%60b2b3%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.), [B4](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20b2b4&body=Ruch%20w%20szachach%3A%20%60b2b4%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.) |
-| **C2** | [C3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20c2c3&body=Ruch%20w%20szachach%3A%20%60c2c3%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.), [C4](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20c2c4&body=Ruch%20w%20szachach%3A%20%60c2c4%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.) |
-| **D1** | [H5](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20d1h5&body=Ruch%20w%20szachach%3A%20%60d1h5%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.), [G4](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20d1g4&body=Ruch%20w%20szachach%3A%20%60d1g4%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.), [F3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20d1f3&body=Ruch%20w%20szachach%3A%20%60d1f3%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.), [E2](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20d1e2&body=Ruch%20w%20szachach%3A%20%60d1e2%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.) |
-| **D2** | [D3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20d2d3&body=Ruch%20w%20szachach%3A%20%60d2d3%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.), [D4](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20d2d4&body=Ruch%20w%20szachach%3A%20%60d2d4%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.) |
-| **E1** | [E2](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20e1e2&body=Ruch%20w%20szachach%3A%20%60e1e2%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.) |
-| **F1** | [A6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20f1a6&body=Ruch%20w%20szachach%3A%20%60f1a6%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.), [B5](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20f1b5&body=Ruch%20w%20szachach%3A%20%60f1b5%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.), [C4](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20f1c4&body=Ruch%20w%20szachach%3A%20%60f1c4%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.), [D3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20f1d3&body=Ruch%20w%20szachach%3A%20%60f1d3%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.), [E2](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20f1e2&body=Ruch%20w%20szachach%3A%20%60f1e2%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.) |
-| **F2** | [F3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20f2f3&body=Ruch%20w%20szachach%3A%20%60f2f3%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.), [F4](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20f2f4&body=Ruch%20w%20szachach%3A%20%60f2f4%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.) |
-| **G1** | [H3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20g1h3&body=Ruch%20w%20szachach%3A%20%60g1h3%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.), [F3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20g1f3&body=Ruch%20w%20szachach%3A%20%60g1f3%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.), [E2](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20g1e2&body=Ruch%20w%20szachach%3A%20%60g1e2%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.) |
-| **G2** | [G3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20g2g3&body=Ruch%20w%20szachach%3A%20%60g2g3%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.), [G4](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20g2g4&body=Ruch%20w%20szachach%3A%20%60g2g4%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.) |
-| **H2** | [H3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20h2h3&body=Ruch%20w%20szachach%3A%20%60h2h3%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.), [H4](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20h2h4&body=Ruch%20w%20szachach%3A%20%60h2h4%60%0A%0AKliknij%20%2A%2ACreate%20new%20issue%2A%2A%2C%20aby%20wykona%C4%87%20ruch.) |
+| **A7** | [A6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20a7a6&body=Chess%20move%3A%20%60a7a6%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [A5](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20a7a5&body=Chess%20move%3A%20%60a7a5%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
+| **B7** | [B6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20b7b6&body=Chess%20move%3A%20%60b7b6%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [B5](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20b7b5&body=Chess%20move%3A%20%60b7b5%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
+| **B8** | [D7](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20b8d7&body=Chess%20move%3A%20%60b8d7%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [C6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20b8c6&body=Chess%20move%3A%20%60b8c6%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [A6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20b8a6&body=Chess%20move%3A%20%60b8a6%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
+| **C7** | [C6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20c7c6&body=Chess%20move%3A%20%60c7c6%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [C5](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20c7c5&body=Chess%20move%3A%20%60c7c5%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
+| **C8** | [D7](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20c8d7&body=Chess%20move%3A%20%60c8d7%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [E6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20c8e6&body=Chess%20move%3A%20%60c8e6%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [F5](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20c8f5&body=Chess%20move%3A%20%60c8f5%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [G4](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20c8g4&body=Chess%20move%3A%20%60c8g4%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [H3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20c8h3&body=Chess%20move%3A%20%60c8h3%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
+| **D8** | [D7](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20d8d7&body=Chess%20move%3A%20%60d8d7%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [D6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20d8d6&body=Chess%20move%3A%20%60d8d6%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
+| **E7** | [E6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20e7e6&body=Chess%20move%3A%20%60e7e6%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [E5](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20e7e5&body=Chess%20move%3A%20%60e7e5%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
+| **E8** | [F7](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20e8f7&body=Chess%20move%3A%20%60e8f7%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [D7](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20e8d7&body=Chess%20move%3A%20%60e8d7%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
+| **F6** | [F5](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20f6f5&body=Chess%20move%3A%20%60f6f5%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
+| **F8** | [G7](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20f8g7&body=Chess%20move%3A%20%60f8g7%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [H6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20f8h6&body=Chess%20move%3A%20%60f8h6%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
+| **G8** | [H6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20g8h6&body=Chess%20move%3A%20%60g8h6%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
+| **H7** | [H6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20h7h6&body=Chess%20move%3A%20%60h7h6%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [H5](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20h7h5&body=Chess%20move%3A%20%60h7h5%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
 
 </details>
 
-#### Jak to działa
-Kliknij wybrany ruch w tabeli **FROM → TO**, a otworzy się gotowe zgłoszenie (*Issue*). Kliknij **Create new issue**, a **GitHub Actions** sprawdzi ruch, zaktualizuje drewnianą planszę i zamknie zgłoszenie. *(Inspiracja: [timburgan](https://github.com/timburgan)).*
+#### How to play
+Click a move link in **FROM → TO** to open a pre-filled Issue, then click **Create new issue**. GitHub Actions validates the move, updates the board, and closes the Issue. *(Inspired by [timburgan](https://github.com/timburgan)).*
 
-#### Ostatnie ruchy
+#### Last few moves
 
 | Move | Who |
 | :--- | :--- |
+| D2 to D4 | @Krzys3n |
 | G7 to F6 | @Krzys3n |
 | E5 to F6 | @Krzys3n |
 | F7 to F5 | @Krzys3n |
 | E4 to E5 | @Krzys3n |
-| D7 to D5 | @Krzys3n |
 
-#### Ranking graczy
+#### Guest Leaderboard
 
-| Moves | Who |
+| Moves | Guest |
 | :---: | :--- |
-| 6 | @Krzys3n |
+| 0 | No guest moves recorded yet |
 <!-- CHESS_END -->

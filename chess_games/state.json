@@ -1,5 +1,5 @@
 {
-  "fen": "rnbqkbnr/ppp1p2p/5p2/3p4/8/8/PPPP1PPP/RNBQKBNR w KQkq - 0 4",
+  "fen": "rnbqkbnr/ppp1p2p/5p2/3p4/3P4/8/PPP2PPP/RNBQKBNR b KQkq - 0 4",
   "moves": [
     {
       "uci": "e2e4",
@@ -24,14 +24,16 @@
     {
       "uci": "g7f6",
       "player": "Krzys3n"
+    },
+    {
+      "uci": "d2d4",
+      "player": "Krzys3n"
     }
   ],
-  "leaderboard": {
-    "Krzys3n": 6
-  },
+  "leaderboard": {},
   "score": {
-    "community": 0,
     "owner": 0,
-    "draws": 0
+    "draws": 0,
+    "guests": 0
   }
 }

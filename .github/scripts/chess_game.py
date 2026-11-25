@@ -175,6 +175,11 @@ def issue_link(uci: str) -> str:
     return f"https://github.com/{OWNER}/{REPO}/issues/new?title={title}&body={body}"
 
 
+def profile_link(username: str) -> str:
+    clean_user = username.strip().lstrip("@")
+    return f"[@{clean_user}](https://github.com/{clean_user})"
+
+
 def render_moves_table(board: chess.Board) -> str:
     by_from: dict[str, list[str]] = {}
     for move in board.legal_moves:
@@ -201,7 +206,7 @@ def render_recent_moves(state: dict) -> str:
         for item in recent:
             src = item["uci"][:2].upper()
             dst = item["uci"][2:4].upper()
-            lines.append(f"| {src} to {dst} | @{item['player']} |")
+            lines.append(f"| {src} to {dst} | {profile_link(item['player'])} |")
     return "\n".join(lines)
 
 
@@ -215,7 +220,7 @@ def render_leaderboard(state: dict) -> str:
         lines.append("| 0 | No guest moves recorded yet |")
     else:
         for player, count in ranked:
-            lines.append(f"| {count} | @{player} |")
+            lines.append(f"| {count} | {profile_link(player)} |")
     return "\n".join(lines)
 
 
@@ -234,7 +239,7 @@ def render_section(state: dict, board_url: str) -> str:
 
     return "\n".join([
         "<!-- CHESS_START -->",
-        f"### ♟️ Play chess with me!",
+        "### ♟️ Play chess with me!",
         "",
         turn_banner,
         "",

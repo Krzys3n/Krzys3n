@@ -1,6 +1,7 @@
 import json
 import os
 import re
+import secrets
 import urllib.parse
 from pathlib import Path
 import chess
@@ -10,7 +11,7 @@ OWNER = "Krzys3n"
 REPO = "Krzys3n"
 ALLOW_OWNER_PLAY_WHITE = True  # Set to False after testing
 STATE_PATH = Path("chess_games/state.json")
-BOARD_IMG_PATH = Path("chess_images/board.png")
+BOARD_DIR = Path("chess_images")
 README_PATH = Path("README.md")
 
 LIGHT_WOOD = (240, 217, 181)
@@ -38,6 +39,7 @@ def load_state() -> dict:
             "moves": [],
             "leaderboard": {},
             "score": {"guests": 0, "owner": 0, "draws": 0},
+            "board_image": None,
         }
 
     score = state.setdefault("score", {})
@@ -59,8 +61,23 @@ def save_state(state: dict) -> None:
     STATE_PATH.write_text(json.dumps(state, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
-def render_board_image(board: chess.Board, last_uci: str | None = None) -> None:
-    BOARD_IMG_PATH.parent.mkdir(parents=True, exist_ok=True)
+def cleanup_old_boards(keep_path: Path) -> None:
+    if not BOARD_DIR.exists():
+        return
+    for file_path in BOARD_DIR.iterdir():
+        if file_path.is_file() and file_path.resolve() != keep_path.resolve():
+            if file_path.name.startswith("board") and file_path.suffix.lower() in {".png", ".jpg", ".jpeg", ".webp"}:
+                file_path.unlink(missing_ok=True)
+
+
+def render_board_image(board: chess.Board, state: dict, last_uci: str | None = None) -> str:
+    BOARD_DIR.mkdir(parents=True, exist_ok=True)
+    step_num = len(state.get("moves", []))
+    move_part = last_uci.lower() if last_uci else "start"
+    token = secrets.token_hex(4)
+    rel_path = f"chess_images/board_{step_num}_{move_part}_{token}.png"
+    out_path = Path(rel_path)
+
     size = MARGIN + SQUARE_SIZE * 8
     img = Image.new("RGB", (size, size), FRAME_WOOD)
     draw = ImageDraw.Draw(img)
@@ -112,7 +129,10 @@ def render_board_image(board: chess.Board, last_uci: str | None = None) -> None:
                 py = y_top + (SQUARE_SIZE - h) / 2 - bbox[1]
                 draw.text((px, py), glyph, fill=(22, 22, 22), font=piece_font)
 
-    img.save(BOARD_IMG_PATH)
+    img.save(out_path)
+    cleanup_old_boards(out_path)
+    state["board_image"] = rel_path
+    return rel_path
 
 
 def issue_link(uci: str) -> str:
@@ -167,19 +187,10 @@ def render_leaderboard(state: dict) -> str:
     return "\n".join(lines)
 
 
-def get_cache_bust_tag(state: dict) -> str:
-    sha = os.environ.get("COMMIT_SHA", "").strip()
-    if sha:
-        return sha[:8]
-    return str(len(state.get("moves", [])))
-
-
-def render_section(state: dict) -> str:
+def render_section(state: dict, board_url: str) -> str:
     board = chess.Board(state["fen"])
     score = state["score"]
     is_white = board.turn == chess.WHITE
-    cache_tag = get_cache_bust_tag(state)
-    board_url = f"chess_images/board.png?v={cache_tag}"
 
     if is_white:
         turn_banner = "⬜ **Your turn! Play White (bottom).** Any guest can make the next move."
@@ -216,6 +227,7 @@ def render_section(state: dict) -> str:
         "<!-- CHESS_END -->",
     ])
 
+
 def update_readme(section: str) -> None:
     readme = README_PATH.read_text(encoding="utf-8") if README_PATH.exists() else ""
     pattern = r"<!-- CHESS_START -->.*?<!-- CHESS_END -->"
@@ -241,9 +253,9 @@ def main() -> None:
     last_uci = state["moves"][-1]["uci"] if state["moves"] else None
 
     if mode == "render":
-        render_board_image(board, last_uci)
+        board_url = render_board_image(board, state, last_uci)
         save_state(state)
-        update_readme(render_section(state))
+        update_readme(render_section(state, board_url))
         write_output("ok", "Board rendered.")
         return
 
@@ -296,14 +308,14 @@ def main() -> None:
 
         state["fen"] = chess.STARTING_FEN
         state["moves"] = []
-        render_board_image(chess.Board(chess.STARTING_FEN), None)
+        board_url = render_board_image(chess.Board(chess.STARTING_FEN), state, None)
     else:
         state["fen"] = board.fen()
-        render_board_image(board, uci)
+        board_url = render_board_image(board, state, uci)
         msg = f"✅ Played `{uci}` by @{actor}."
 
     save_state(state)
-    update_readme(render_section(state))
+    update_readme(render_section(state, board_url))
     write_output("ok", msg)
 
 

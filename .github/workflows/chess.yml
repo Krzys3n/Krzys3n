@@ -36,14 +36,17 @@ jobs:
 
       - name: Comment and close issue
         if: github.event_name == 'issues'
+        env:
+          MESSAGE: ${{ steps.game.outputs.message }}
         uses: actions/github-script@v7
         with:
           script: |
+            const body = process.env.MESSAGE || "Ruch przetworzony.";
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: `${{ steps.game.outputs.message }}`
+              body
             });
             await github.rest.issues.update({
               owner: context.repo.owner,

@@ -1,88 +1,11 @@
 {
-  "fen": "rnbQ1b1r/ppp4p/4k3/3pp3/8/8/PPP2PPP/RN2KBNR b KQ - 0 10",
-  "moves": [
-    {
-      "uci": "e2e4",
-      "player": "Krzys3n"
-    },
-    {
-      "uci": "d7d5",
-      "player": "Krzys3n"
-    },
-    {
-      "uci": "e4e5",
-      "player": "Krzys3n"
-    },
-    {
-      "uci": "f7f5",
-      "player": "Krzys3n"
-    },
-    {
-      "uci": "e5f6",
-      "player": "Krzys3n"
-    },
-    {
-      "uci": "g7f6",
-      "player": "Krzys3n"
-    },
-    {
-      "uci": "d2d4",
-      "player": "Krzys3n"
-    },
-    {
-      "uci": "e7e5",
-      "player": "Krzys3n"
-    },
-    {
-      "uci": "d1h5",
-      "player": "Krzys3n"
-    },
-    {
-      "uci": "e8e7",
-      "player": "Krzys3n"
-    },
-    {
-      "uci": "d4e5",
-      "player": "Krzys3n"
-    },
-    {
-      "uci": "f6e5",
-      "player": "Krzys3n"
-    },
-    {
-      "uci": "c1g5",
-      "player": "Krzys3n"
-    },
-    {
-      "uci": "g8f6",
-      "player": "Krzys3n"
-    },
-    {
-      "uci": "g5f6",
-      "player": "Krzys3n"
-    },
-    {
-      "uci": "e7f6",
-      "player": "Krzys3n"
-    },
-    {
-      "uci": "h5h4",
-      "player": "Krzys3n"
-    },
-    {
-      "uci": "f6e6",
-      "player": "Krzys3n"
-    },
-    {
-      "uci": "h4d8",
-      "player": "Krzys3n"
-    }
-  ],
+  "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+  "moves": [],
   "leaderboard": {},
   "score": {
     "owner": 0,
     "draws": 0,
     "guests": 0
   },
-  "board_image": "chess_images/board_19_h4d8_c28802e7.png"
+  "board_image": "chess_images/board_0_start_e4e84431.png"
 }

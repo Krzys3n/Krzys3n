@@ -8,7 +8,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 OWNER = "Krzys3n"
 REPO = "Krzys3n"
-ALLOW_OWNER_PLAY_WHITE = True  # Zmień na False po zakończeniu testów
+ALLOW_OWNER_PLAY_WHITE = True  # Set to False after testing
 STATE_PATH = Path("chess_games/state.json")
 BOARD_IMG_PATH = Path("chess_images/board.png")
 README_PATH = Path("README.md")
@@ -31,13 +31,27 @@ PIECE_GLYPHS = {
 
 def load_state() -> dict:
     if STATE_PATH.exists():
-        return json.loads(STATE_PATH.read_text(encoding="utf-8"))
-    return {
-        "fen": chess.STARTING_FEN,
-        "moves": [],
-        "leaderboard": {},
-        "score": {"community": 0, "owner": 0, "draws": 0},
-    }
+        state = json.loads(STATE_PATH.read_text(encoding="utf-8"))
+    else:
+        state = {
+            "fen": chess.STARTING_FEN,
+            "moves": [],
+            "leaderboard": {},
+            "score": {"guests": 0, "owner": 0, "draws": 0},
+        }
+
+    score = state.setdefault("score", {})
+    if "guests" not in score:
+        score["guests"] = score.pop("community", 0)
+    score.setdefault("owner", 0)
+    score.setdefault("draws", 0)
+
+    leaderboard = state.setdefault("leaderboard", {})
+    for key in list(leaderboard.keys()):
+        if key.lower() == OWNER.lower():
+            del leaderboard[key]
+
+    return state
 
 
 def save_state(state: dict) -> None:
@@ -104,7 +118,7 @@ def render_board_image(board: chess.Board, last_uci: str | None = None) -> None:
 def issue_link(uci: str) -> str:
     title = urllib.parse.quote(f"chess: {uci}")
     body = urllib.parse.quote(
-        f"Ruch w szachach: `{uci}`\n\nKliknij **Create new issue**, aby wykonać ruch."
+        f"Chess move: `{uci}`\n\nClick **Create new issue** to play this move."
     )
     return f"https://github.com/{OWNER}/{REPO}/issues/new?title={title}&body={body}"
 
@@ -118,9 +132,9 @@ def render_moves_table(board: chess.Board) -> str:
         by_from.setdefault(src, []).append(f"[{dst}]({issue_link(uci)})")
 
     if not by_from:
-        return "Brak dostępnych ruchów."
+        return "No legal moves available."
 
-    lines = ["| FROM | TO - kliknij ruch |", "| :---: | :--- |"]
+    lines = ["| FROM | TO - click a move |", "| :---: | :--- |"]
     for src in sorted(by_from.keys()):
         lines.append(f"| **{src}** | {', '.join(by_from[src])} |")
     return "\n".join(lines)
@@ -130,7 +144,7 @@ def render_recent_moves(state: dict) -> str:
     lines = ["| Move | Who |", "| :--- | :--- |"]
     recent = state["moves"][-5:][::-1]
     if not recent:
-        lines.append("| — | Partia czeka na pierwszy ruch |")
+        lines.append("| — | Waiting for the first move |")
     else:
         for item in recent:
             src = item["uci"][:2].upper()
@@ -140,55 +154,66 @@ def render_recent_moves(state: dict) -> str:
 
 
 def render_leaderboard(state: dict) -> str:
-    board_data = state.get("leaderboard", {})
+    board_data = {
+        k: v for k, v in state.get("leaderboard", {}).items() if k.lower() != OWNER.lower()
+    }
     ranked = sorted(board_data.items(), key=lambda x: (-x[1], x[0].lower()))[:10]
-    lines = ["| Moves | Who |", "| :---: | :--- |"]
+    lines = ["| Moves | Guest |", "| :---: | :--- |"]
     if not ranked:
-        lines.append("| 0 | Brak zapisanych ruchów |")
+        lines.append("| 0 | No guest moves recorded yet |")
     else:
         for player, count in ranked:
             lines.append(f"| {count} | @{player} |")
     return "\n".join(lines)
 
 
+def get_cache_bust_tag(state: dict) -> str:
+    sha = os.environ.get("COMMIT_SHA", "").strip()
+    if sha:
+        return sha[:8]
+    return str(len(state.get("moves", [])))
+
+
 def render_section(state: dict) -> str:
     board = chess.Board(state["fen"])
     score = state["score"]
     is_white = board.turn == chess.WHITE
+    cache_tag = get_cache_bust_tag(state)
+    board_url = f"chess_images/board.png?v={cache_tag}"
 
     if is_white:
-        turn_banner = "👋 **Twój ruch! Zagraj białymi (dół planszy).** Każdy gość może wykonać następny ruch."
+        turn_banner = "⬜ **Your turn! Play White (bottom).** Any guest can make the next move."
     else:
-        turn_banner = f"⬛ **Kolej @{OWNER} (czarne — góra planszy).** Ruch wyłącznie dla właściciela profilu."
+        turn_banner = f"⬛ **@{OWNER}'s turn (Black — top).** Restricted to the profile owner."
 
     if board.is_check():
-        turn_banner += " ⚠️ **SZACH!**"
+        turn_banner += " ⚠️ **CHECK!**"
 
     return "\n".join([
         "<!-- CHESS_START -->",
-        "### ♟️ Community Chess — Ty (czarne) vs Społeczność (białe)",
+        f"### ♟️ Community Chess — {OWNER} vs Guests",
         "",
         turn_banner,
         "",
-        f"**Wynik partii:** Społeczność **{score['community']}** : **{score['owner']}** @{OWNER} *(Remisy: {score['draws']})*",
+        f"**Series score:** {OWNER} **{score['owner']}** : **{score['guests']}** Guests *(Draws: {score['draws']})*",
         "",
-        "![Drewniana szachownica](chess_images/board.png?raw=true)",
+        f"![Wooden Chessboard]({board_url})",
         "",
         "<details>",
-        "<summary><b>🎯 Wybierz ruch (FROM → TO)</b></summary>",
+        "<summary><b>🎯 Choose a move (FROM → TO)</b></summary>",
         "",
         render_moves_table(board),
         "",
         "</details>",
         "",
-        "#### Jak to działa",
-        "Kliknij wybrany ruch w tabeli **FROM → TO**, a otworzy się gotowe zgłoszenie (*Issue*). Kliknij **Create new issue**, a **GitHub Actions** sprawdzi ruch, zaktualizuje drewnianą planszę i zamknie zgłoszenie. *(Inspiracja: [timburgan](https://github.com/timburgan)).*",
+        "#### How to play",
+        f"Click a move link in **FROM → TO** to open a pre-filled Issue, then click **Create new issue**. GitHub Actions validates the move, updates the board, and closes the Issue. *(Inspired by [timburgan](https://github.com/timburgan)).*",
         "",
-        "#### Ostatnie ruchy",
+        "#### Last few moves",
         "",
         render_recent_moves(state),
         "",
-        "#### Ranking graczy",
+        "#### Guest Leaderboard",
         "",
         render_leaderboard(state),
         "<!-- CHESS_END -->",
@@ -223,7 +248,7 @@ def main() -> None:
         render_board_image(board, last_uci)
         save_state(state)
         update_readme(render_section(state))
-        write_output("ok", "Plansza została wygenerowana.")
+        write_output("ok", "Board rendered.")
         return
 
     actor = os.environ.get("ISSUE_AUTHOR", "").strip()
@@ -231,45 +256,47 @@ def main() -> None:
 
     match = re.match(r"^chess:\s*([a-h][1-8][a-h][1-8][qrbn]?)$", title, flags=re.I)
     if not match:
-        write_output("invalid", "Nieprawidłowy format ruchu. Kliknij link ruchu w README.")
+        write_output("invalid", "Invalid move format. Click a move link in the README.")
         return
 
     uci = match.group(1).lower()
 
     if board.turn == chess.BLACK and actor.lower() != OWNER.lower():
-        write_output("invalid", f"Teraz kolej czarnych — ruch może wykonać tylko @{OWNER}.")
+        write_output("invalid", f"It is Black's turn — only @{OWNER} can move Black.")
         return
 
     if board.turn == chess.WHITE and actor.lower() == OWNER.lower() and not ALLOW_OWNER_PLAY_WHITE:
-        write_output("invalid", f"@{OWNER} gra czarnymi — białymi grają odwiedzający!")
+        write_output("invalid", f"@{OWNER} plays Black — White is for guests!")
         return
 
     try:
         move = chess.Move.from_uci(uci)
     except ValueError:
-        write_output("invalid", f"Niepoprawny ruch: `{uci}`.")
+        write_output("invalid", f"Invalid move: `{uci}`.")
         return
 
     if move not in board.legal_moves:
-        write_output("invalid", f"Ruch `{uci}` jest w tej pozycji nielegalny.")
+        write_output("invalid", f"Move `{uci}` is illegal in the current position.")
         return
 
     board.push(move)
     state["moves"].append({"uci": uci, "player": actor})
-    leaderboard = state.setdefault("leaderboard", {})
-    leaderboard[actor] = leaderboard.get(actor, 0) + 1
+
+    if actor.lower() != OWNER.lower():
+        leaderboard = state.setdefault("leaderboard", {})
+        leaderboard[actor] = leaderboard.get(actor, 0) + 1
 
     if board.is_game_over():
         outcome = board.outcome()
         if outcome and outcome.winner == chess.WHITE:
-            state["score"]["community"] += 1
-            msg = f"🎉 Szach-mat! Społeczność (ostatni ruch: @{actor}) wygrywa! Rozpoczynamy nową partię."
+            state["score"]["guests"] += 1
+            msg = f"🎉 Checkmate! Guests (last move: @{actor}) win the game! Starting a new game."
         elif outcome and outcome.winner == chess.BLACK:
             state["score"]["owner"] += 1
-            msg = f"👑 Szach-mat! @{OWNER} wygrywa! Rozpoczęto nową partię."
+            msg = f"👑 Checkmate! @{OWNER} wins the game! Starting a new game."
         else:
             state["score"]["draws"] += 1
-            msg = "🤝 Remis! Rozpoczynamy nową partię."
+            msg = "🤝 Game drawn! Starting a new game."
 
         state["fen"] = chess.STARTING_FEN
         state["moves"] = []
@@ -277,7 +304,7 @@ def main() -> None:
     else:
         state["fen"] = board.fen()
         render_board_image(board, uci)
-        msg = f"✅ Wykonano ruch `{uci}` przez @{actor}."
+        msg = f"✅ Played `{uci}` by @{actor}."
 
     save_state(state)
     update_readme(render_section(state))

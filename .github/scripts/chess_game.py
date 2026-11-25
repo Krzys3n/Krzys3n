@@ -78,16 +78,31 @@ def render_board_image(board: chess.Board, state: dict, last_uci: str | None = N
     rel_path = f"chess_images/board_{step_num}_{move_part}_{token}.png"
     out_path = Path(rel_path)
 
-    size = MARGIN + SQUARE_SIZE * 8
-    img = Image.new("RGB", (size, size), FRAME_WOOD)
+    label_band = 28
+    outer_border = 8
+    board_px = SQUARE_SIZE * 8
+    total_w = board_px + 2 * (outer_border + label_band)
+    total_h = board_px + 2 * (outer_border + label_band)
+
+    img = Image.new("RGB", (total_w, total_h), FRAME_WOOD)
     draw = ImageDraw.Draw(img)
 
     try:
         piece_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 46)
-        label_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 16)
+        label_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 15)
     except OSError:
         piece_font = ImageFont.load_default()
         label_font = ImageFont.load_default()
+
+    # Dekoracyjna ramka zewnętrzna
+    draw.rectangle(
+        [outer_border // 2, outer_border // 2, total_w - outer_border // 2 - 1, total_h - outer_border // 2 - 1],
+        outline=DARK_WOOD,
+        width=2,
+    )
+
+    origin_x = outer_border + label_band
+    origin_y = outer_border + label_band
 
     highlight_squares: set[int] = set()
     if last_uci and len(last_uci) >= 4:
@@ -98,18 +113,35 @@ def render_board_image(board: chess.Board, state: dict, last_uci: str | None = N
             pass
 
     files = "ABCDEFGH"
+    top_label_y = outer_border + (label_band - 16) // 2
+    bottom_label_y = origin_y + board_px + (label_band - 16) // 2
+
     for f_idx, ch in enumerate(files):
-        x = MARGIN + f_idx * SQUARE_SIZE + SQUARE_SIZE // 2 - 5
-        draw.text((x, 5), ch, fill=LABEL_TEXT, font=label_font)
+        x_left = origin_x + f_idx * SQUARE_SIZE
+        bbox = draw.textbbox((0, 0), ch, font=label_font)
+        cw = bbox[2] - bbox[0]
+        cx = x_left + (SQUARE_SIZE - cw) / 2 - bbox[0]
+        draw.text((cx, top_label_y), ch, fill=LABEL_TEXT, font=label_font)
+        draw.text((cx, bottom_label_y), ch, fill=LABEL_TEXT, font=label_font)
+
+    left_label_x = outer_border + 6
+    right_label_x = origin_x + board_px + 6
 
     for rank in range(7, -1, -1):
         row_idx = 7 - rank
-        y_top = MARGIN + row_idx * SQUARE_SIZE
-        draw.text((10, y_top + SQUARE_SIZE // 2 - 9), str(rank + 1), fill=LABEL_TEXT, font=label_font)
+        y_top = origin_y + row_idx * SQUARE_SIZE
+        rank_str = str(rank + 1)
+
+        bbox_r = draw.textbbox((0, 0), rank_str, font=label_font)
+        rh = bbox_r[3] - bbox_r[1]
+        ry = y_top + (SQUARE_SIZE - rh) / 2 - bbox_r[1]
+
+        draw.text((left_label_x, ry), rank_str, fill=LABEL_TEXT, font=label_font)
+        draw.text((right_label_x, ry), rank_str, fill=LABEL_TEXT, font=label_font)
 
         for file in range(8):
             sq = chess.square(file, rank)
-            x_left = MARGIN + file * SQUARE_SIZE
+            x_left = origin_x + file * SQUARE_SIZE
             is_light = (rank + file) % 2 == 1
 
             if sq in highlight_squares:

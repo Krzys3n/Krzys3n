@@ -15,7 +15,7 @@ YouTube creator | Chess player | Gamer | Tech enthusiast
 
 **Series score:** Krzys3n **0** : **0** Guests *(Draws: 0)*
 
-![Wooden Chessboard](chess_images/board_0_start_2bde705f.png)
+![Wooden Chessboard](chess_images/board_0_start_76f5e041.png)
 
 #### 🎯 Choose a move (FROM → TO)
 

@@ -1,5 +1,5 @@
 {
-  "fen": "rnbq1bnr/ppp1k2p/5p2/3pP2Q/8/8/PPP2PPP/RNB1KBNR b KQ - 0 6",
+  "fen": "rnbq1bnr/ppp1k2p/8/3pp2Q/8/8/PPP2PPP/RNB1KBNR w KQ - 0 7",
   "moves": [
     {
       "uci": "e2e4",
@@ -43,6 +43,10 @@
     },
     {
       "uci": "d4e5",
+      "player": "Krzys3n"
+    },
+    {
+      "uci": "f6e5",
       "player": "Krzys3n"
     }
   ],

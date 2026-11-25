@@ -202,7 +202,7 @@ def render_section(state: dict, board_url: str) -> str:
 
     return "\n".join([
         "<!-- CHESS_START -->",
-        f"### ♟️ Community Chess — {OWNER} vs Guests",
+        f"### ♟️ Play chess with me!",
         "",
         turn_banner,
         "",

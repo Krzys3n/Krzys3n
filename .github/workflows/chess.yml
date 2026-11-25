@@ -4,6 +4,12 @@ on:
   issues:
     types: [opened]
   workflow_dispatch:
+    inputs:
+      reset_game:
+        description: "Reset current chess game to starting position"
+        required: false
+        default: "false"
+        type: boolean
 
 permissions:
   contents: write
@@ -33,6 +39,7 @@ jobs:
           ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
           ISSUE_TITLE: ${{ github.event.issue.title }}
           COMMIT_SHA: ${{ github.sha }}
+          RESET_GAME: ${{ inputs.reset_game || 'false' }}
         run: python3 .github/scripts/chess_game.py
 
       - name: Comment and close issue

@@ -9,13 +9,13 @@ YouTube creator | Chess player | Gamer | Tech enthusiast
 ---
 
 <!-- CHESS_START -->
-### ♟️ Community Chess — Krzys3n vs Guests
+### ♟️ Play chess with me!
 
 ⬜ **Your turn! Play White (bottom).** Any guest can make the next move.
 
 **Series score:** Krzys3n **0** : **0** Guests *(Draws: 0)*
 
-![Wooden Chessboard](chess_images/board_0_start_e4e84431.png)
+![Wooden Chessboard](chess_images/board_0_start_2bde705f.png)
 
 #### 🎯 Choose a move (FROM → TO)
 

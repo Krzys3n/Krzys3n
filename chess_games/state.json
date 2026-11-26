@@ -1,5 +1,5 @@
 {
-  "fen": "rn2k2r/pp3pp1/2p4p/1Bb1p3/3qn3/5Q1P/PPPP3P/RNB1K2R w KQkq - 0 11",
+  "fen": "rn2k2r/pp3pp1/2p4p/2b1p3/3qn3/3B1Q1P/PPPP3P/RNB1K2R b KQkq - 1 11",
   "moves": [
     {
       "uci": "e2e4",
@@ -80,18 +80,23 @@
     {
       "uci": "c7c6",
       "player": "Krzys3n"
+    },
+    {
+      "uci": "b5d3",
+      "player": "Zafkieli"
     }
   ],
   "leaderboard": {
     "Mniok": 7,
-    "Shiro99x": 1
+    "Shiro99x": 1,
+    "Zafkieli": 1
   },
   "score": {
     "owner": 0,
     "draws": 0,
     "guests": 0
   },
-  "board_image": "chess_images/board_20_c7c6_e63c4b2d.png",
+  "board_image": "chess_images/board_21_b5d3_ca456e88.png",
   "surrender_votes": [
     "Krzys3n"
   ]

@@ -265,7 +265,7 @@ def render_section(state: dict, board_url: str) -> str:
         "",
         render_moves_table(board),
         "",
-        f"**Surrender votes ({len(votes)})** — [🏳️ Vote to surrender]({surrender_issue_link()})",
+        f"**Surrender votes ({len(votes)})** — [🏳️ Vote to surrender]({surrender_issue_link()})  \n*If you feel that the position is lost, you can vote to surrender. If I see enough votes, I will reset the match and mark it as a win.*",
         "",
         "#### How to play",
         f"Click a move link in **FROM → TO** to open a pre-filled Issue, then click **Create new issue**. GitHub Actions validates the move, updates the board, and closes the Issue. *(Inspired by [timburgan](https://github.com/timburgan)).*",

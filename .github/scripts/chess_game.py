@@ -9,7 +9,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 OWNER = "Krzys3n"
 REPO = "Krzys3n"
-ALLOW_OWNER_PLAY_WHITE = True  # Set to False after testing
+ALLOW_OWNER_PLAY_WHITE = False  # Set to False after testing
 STATE_PATH = Path("chess_games/state.json")
 BOARD_DIR = Path("chess_images")
 README_PATH = Path("README.md")

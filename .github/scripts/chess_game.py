@@ -305,19 +305,37 @@ def main() -> None:
     mode = os.environ.get("MODE", "render")
     last_uci = state["moves"][-1]["uci"] if state["moves"] else None
 
-    reset_requested = os.environ.get("RESET_GAME", "").strip().lower() in {"true", "1", "yes"}
+    reset_mode = os.environ.get("RESET_MODE", "").strip().lower()
+    legacy_reset = os.environ.get("RESET_GAME", "").strip().lower() in {"true", "1", "yes"}
+    if not reset_mode and legacy_reset:
+        reset_mode = "reset_only"
 
     if mode == "render":
-        if reset_requested:
+        if reset_mode in {"reset_only", "owner_win", "guests_win", "draw"}:
+            if reset_mode == "owner_win":
+                state["score"]["owner"] += 1
+                result_msg = f"Game reset — +1 win awarded to @{OWNER}."
+            elif reset_mode == "guests_win":
+                state["score"]["guests"] += 1
+                result_msg = "Game reset — +1 win awarded to Guests."
+            elif reset_mode == "draw":
+                state["score"]["draws"] += 1
+                result_msg = "Game reset — +1 draw recorded."
+            else:
+                result_msg = "Game reset to starting position."
+
             state["fen"] = chess.STARTING_FEN
             state["moves"] = []
             state["surrender_votes"] = []
             board = chess.Board(chess.STARTING_FEN)
             last_uci = None
+        else:
+            result_msg = "Board rendered."
+
         board_url = render_board_image(board, state, last_uci)
         save_state(state)
         update_readme(render_section(state, board_url))
-        write_output("ok", "Game reset to starting position." if reset_requested else "Board rendered.")
+        write_output("ok", result_msg)
         return
 
     actor = os.environ.get("ISSUE_AUTHOR", "").strip()

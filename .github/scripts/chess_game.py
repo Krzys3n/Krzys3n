@@ -39,6 +39,7 @@ def load_state() -> dict:
             "moves": [],
             "leaderboard": {},
             "score": {"guests": 0, "owner": 0, "draws": 0},
+            "surrender_votes": [],
             "board_image": None,
         }
 
@@ -52,6 +53,10 @@ def load_state() -> dict:
     for key in list(leaderboard.keys()):
         if key.lower() == OWNER.lower():
             del leaderboard[key]
+
+    votes = state.setdefault("surrender_votes", [])
+    if not isinstance(votes, list):
+        state["surrender_votes"] = []
 
     return state
 
@@ -175,6 +180,14 @@ def issue_link(uci: str) -> str:
     return f"https://github.com/{OWNER}/{REPO}/issues/new?title={title}&body={body}"
 
 
+def surrender_issue_link() -> str:
+    title = urllib.parse.quote("chess: surrender")
+    body = urllib.parse.quote(
+        "Vote to surrender the current game.\n\nClick **Create new issue** to submit your vote."
+    )
+    return f"https://github.com/{OWNER}/{REPO}/issues/new?title={title}&body={body}"
+
+
 def profile_link(username: str) -> str:
     clean_user = username.strip().lstrip("@")
     return f"[@{clean_user}](https://github.com/{clean_user})"
@@ -228,6 +241,7 @@ def render_section(state: dict, board_url: str) -> str:
     board = chess.Board(state["fen"])
     score = state["score"]
     is_white = board.turn == chess.WHITE
+    votes = state.get("surrender_votes", [])
 
     if is_white:
         turn_banner = "⬜ **Your turn! Play White (bottom).** Any guest can make the next move."
@@ -244,6 +258,8 @@ def render_section(state: dict, board_url: str) -> str:
         turn_banner,
         "",
         f"**Series score:** {OWNER} **{score['owner']}** : **{score['guests']}** Guests *(Draws: {score['draws']})*",
+        "",
+        f"**Surrender votes ({len(votes)})** — [🏳️ Vote to surrender]({surrender_issue_link()})",
         "",
         f"![Wooden Chessboard]({board_url})",
         "",
@@ -295,6 +311,7 @@ def main() -> None:
         if reset_requested:
             state["fen"] = chess.STARTING_FEN
             state["moves"] = []
+            state["surrender_votes"] = []
             board = chess.Board(chess.STARTING_FEN)
             last_uci = None
         board_url = render_board_image(board, state, last_uci)
@@ -305,6 +322,22 @@ def main() -> None:
 
     actor = os.environ.get("ISSUE_AUTHOR", "").strip()
     title = os.environ.get("ISSUE_TITLE", "").strip()
+
+    if re.match(r"^chess:\s*surrender$", title, flags=re.I):
+        votes = state.setdefault("surrender_votes", [])
+        actor_clean = actor.lstrip("@")
+        if not actor_clean:
+            write_output("invalid", "Missing issue author.")
+            return
+        if any(v.lower() == actor_clean.lower() for v in votes):
+            write_output("invalid", f"@{actor_clean} already voted to surrender this game.")
+            return
+        votes.append(actor_clean)
+        board_url = state.get("board_image") or render_board_image(board, state, last_uci)
+        save_state(state)
+        update_readme(render_section(state, board_url))
+        write_output("ok", f"🏳️ @{actor_clean} voted to surrender ({len(votes)} vote(s)).")
+        return
 
     match = re.match(r"^chess:\s*([a-h][1-8][a-h][1-8][qrbn]?)$", title, flags=re.I)
     if not match:
@@ -352,6 +385,7 @@ def main() -> None:
 
         state["fen"] = chess.STARTING_FEN
         state["moves"] = []
+        state["surrender_votes"] = []
         board_url = render_board_image(chess.Board(chess.STARTING_FEN), state, None)
     else:
         state["fen"] = board.fen()

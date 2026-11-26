@@ -1,5 +1,5 @@
 {
-  "fen": "rn2kb1r/ppp2pp1/7p/4p3/3qn1Q1/7P/PPPP3P/RNB1KB1R w KQkq - 2 9",
+  "fen": "rn2kb1r/ppp2pp1/7p/4p3/3qn3/5Q1P/PPPP3P/RNB1KB1R b KQkq - 3 9",
   "moves": [
     {
       "uci": "e2e4",
@@ -64,17 +64,22 @@
     {
       "uci": "d8d4",
       "player": "Krzys3n"
+    },
+    {
+      "uci": "g4f3",
+      "player": "Shiro99x"
     }
   ],
   "leaderboard": {
-    "Mniok": 6
+    "Mniok": 6,
+    "Shiro99x": 1
   },
   "score": {
     "owner": 0,
     "draws": 0,
     "guests": 0
   },
-  "board_image": "chess_images/board_16_d8d4_503ac540.png",
+  "board_image": "chess_images/board_17_g4f3_f6556ad2.png",
   "surrender_votes": [
     "Krzys3n"
   ]

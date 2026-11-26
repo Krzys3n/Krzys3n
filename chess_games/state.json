@@ -1,5 +1,5 @@
 {
-  "fen": "rnbqkb1r/pppp1ppp/5n2/4p3/4P3/5P1N/PPPP2PP/RNBQKB1R b KQkq - 1 3",
+  "fen": "rnbqkb1r/ppp2ppp/5n2/3pp3/4P3/5P1N/PPPP2PP/RNBQKB1R w KQkq - 0 4",
   "moves": [
     {
       "uci": "e2e4",
@@ -20,6 +20,10 @@
     {
       "uci": "g1h3",
       "player": "Mniok"
+    },
+    {
+      "uci": "d7d5",
+      "player": "Krzys3n"
     }
   ],
   "leaderboard": {
@@ -30,5 +34,5 @@
     "draws": 0,
     "guests": 0
   },
-  "board_image": "chess_images/board_5_g1h3_781caba7.png"
+  "board_image": "chess_images/board_6_d7d5_0f6e889f.png"
 }

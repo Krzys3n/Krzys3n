@@ -1,5 +1,5 @@
 {
-  "fen": "rn1qkb1r/ppp2pp1/5n1p/4p3/4p3/5P1P/PPPP3P/RNBQKB1R w KQkq - 0 7",
+  "fen": "rn1qkb1r/ppp2pp1/5n1p/4p3/4P3/7P/PPPP3P/RNBQKB1R b KQkq - 0 7",
   "moves": [
     {
       "uci": "e2e4",
@@ -48,6 +48,10 @@
     {
       "uci": "d5e4",
       "player": "Krzys3n"
+    },
+    {
+      "uci": "f3e4",
+      "player": "Krzys3n"
     }
   ],
   "leaderboard": {
@@ -58,5 +62,6 @@
     "draws": 0,
     "guests": 0
   },
-  "board_image": "chess_images/board_12_d5e4_7d3f5ccb.png"
+  "board_image": "chess_images/board_13_f3e4_bd2ee023.png",
+  "surrender_votes": []
 }

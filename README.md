@@ -15,7 +15,7 @@ YouTube creator | Chess player | Gamer | Tech enthusiast
 
 **Series score:** Krzys3n **0** : **0** Guests *(Draws: 0)*
 
-**Surrender votes (0)** — [🏳️ Vote to surrender](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20surrender&body=Vote%20to%20surrender%20the%20current%20game.%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20submit%20your%20vote.)
+**Surrender votes (1)** — [🏳️ Vote to surrender](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20surrender&body=Vote%20to%20surrender%20the%20current%20game.%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20submit%20your%20vote.)
 
 ![Wooden Chessboard](chess_images/board_13_f3e4_bd2ee023.png)
 

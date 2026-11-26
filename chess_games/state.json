@@ -63,5 +63,7 @@
     "guests": 0
   },
   "board_image": "chess_images/board_13_f3e4_bd2ee023.png",
-  "surrender_votes": []
+  "surrender_votes": [
+    "Krzys3n"
+  ]
 }

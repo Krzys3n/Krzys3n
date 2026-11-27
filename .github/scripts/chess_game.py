@@ -33,6 +33,15 @@ PIECE_GLYPHS = {
 }
 
 
+def get_surrender_count(state: dict) -> int:
+    if isinstance(state.get("surrender_votes_count"), int):
+        return max(0, state["surrender_votes_count"])
+    votes = state.get("surrender_votes")
+    if isinstance(votes, list):
+        return len(votes)
+    return 0
+
+
 def load_state() -> dict:
     if STATE_PATH.exists():
         state = json.loads(STATE_PATH.read_text(encoding="utf-8"))
@@ -42,7 +51,8 @@ def load_state() -> dict:
             "moves": [],
             "leaderboard": {},
             "score": {"guests": 0, "owner": 0, "draws": 0},
-            "surrender_votes": [],
+            "surrender_votes_count": 0,
+            "last_surrender_voter": None,
             "game_number": 1,
             "board_image": None,
         }
@@ -58,13 +68,20 @@ def load_state() -> dict:
         if key.lower() == OWNER.lower():
             del leaderboard[key]
 
-    votes = state.setdefault("surrender_votes", [])
-    if not isinstance(votes, list):
-        state["surrender_votes"] = []
+    count = get_surrender_count(state)
+    state["surrender_votes_count"] = count
+    state.pop("surrender_votes", None)
+
+    last_voter = state.get("last_surrender_voter")
+    if isinstance(last_voter, str) and last_voter.strip():
+        state["last_surrender_voter"] = last_voter.strip().lstrip("@")
+    else:
+        state["last_surrender_voter"] = None
 
     game_number = state.get("game_number", 1)
     if not isinstance(game_number, int) or game_number < 1:
         state["game_number"] = 1
+
     HISTORY_DIR.mkdir(parents=True, exist_ok=True)
     return state
 
@@ -76,9 +93,9 @@ def save_state(state: dict) -> None:
 
 def archive_finished_game(state: dict, reason: str, pgn_result: str) -> str | None:
     board_moves = [m for m in state.get("moves", []) if m.get("type") != "surrender" and m.get("uci")]
-    surrender_votes = list(state.get("surrender_votes", []))
+    surrender_count = get_surrender_count(state)
 
-    if not board_moves and not surrender_votes:
+    if not board_moves and surrender_count == 0:
         return None
 
     HISTORY_DIR.mkdir(parents=True, exist_ok=True)
@@ -133,8 +150,7 @@ def archive_finished_game(state: dict, reason: str, pgn_result: str) -> str | No
         "total_plies": len(move_log),
         "unique_guests_count": len(unique_guests),
         "unique_guests": unique_guests,
-        "surrender_votes_count": len(surrender_votes),
-        "surrender_votes": surrender_votes,
+        "surrender_votes_count": surrender_count,
         "score_after": dict(state.get("score", {})),
         "moves": move_log,
     }
@@ -324,7 +340,7 @@ def render_section(state: dict, board_url: str) -> str:
     board = chess.Board(state["fen"])
     score = state["score"]
     is_white = board.turn == chess.WHITE
-    votes = state.get("surrender_votes", [])
+    votes_count = get_surrender_count(state)
 
     if is_white:
         turn_banner = "⬜ **Your turn! Play White (bottom).** Any guest can make the next move."
@@ -349,7 +365,7 @@ def render_section(state: dict, board_url: str) -> str:
         "",
         render_moves_table(board),
         "",
-        f"**Surrender votes ({len(votes)})** [🏳️ Vote to surrender]({surrender_issue_link()})  \n*If you feel that the position is lost, you can vote to surrender. If I see two votes in a row, I will reset the board and mark it as a win.*",
+        f"**Surrender votes ({votes_count})** [🏳️ Vote to surrender]({surrender_issue_link()})  \n*If you feel that the position is lost, you can vote to surrender. If I see two votes in a row, I will reset the board and mark it as a win.*",
         "",
         "#### How to play",
         f"Click a move link in **FROM → TO** to open a pre-filled Issue, then click **Create new issue**. GitHub Actions validates the move, updates the board, and closes the Issue. *(Inspired by [timburgan](https://github.com/timburgan)).*",
@@ -395,6 +411,14 @@ def get_last_board_uci(state: dict) -> str | None:
     return None
 
 
+def reset_match_state(state: dict) -> chess.Board:
+    state["fen"] = chess.STARTING_FEN
+    state["moves"] = []
+    state["surrender_votes_count"] = 0
+    state["last_surrender_voter"] = None
+    return chess.Board(chess.STARTING_FEN)
+
+
 def main() -> None:
     state = load_state()
     board = chess.Board(state["fen"])
@@ -428,10 +452,7 @@ def main() -> None:
                 suffix = f" Saved as {archived}." if archived else ""
                 result_msg = f"Game reset to starting position.{suffix}"
 
-            state["fen"] = chess.STARTING_FEN
-            state["moves"] = []
-            state["surrender_votes"] = []
-            board = chess.Board(chess.STARTING_FEN)
+            board = reset_match_state(state)
             last_uci = None
         else:
             result_msg = "Board rendered."
@@ -446,21 +467,24 @@ def main() -> None:
     title = os.environ.get("ISSUE_TITLE", "").strip()
 
     if re.match(r"^chess:\s*surrender$", title, flags=re.I):
-        votes = state.setdefault("surrender_votes", [])
         actor_clean = actor.lstrip("@")
         if not actor_clean:
             write_output("invalid", "Missing issue author.")
             return
-        if any(v.lower() == actor_clean.lower() for v in votes):
-            write_output("invalid", f"@{actor_clean} already voted to surrender this game.")
+
+        last_voter = state.get("last_surrender_voter")
+        if isinstance(last_voter, str) and last_voter.lower() == actor_clean.lower():
+            write_output("invalid", f"@{actor_clean} already cast the most recent surrender vote.")
             return
 
-        votes.append(actor_clean)
+        new_count = get_surrender_count(state) + 1
+        state["surrender_votes_count"] = new_count
+        state["last_surrender_voter"] = actor_clean
         state["moves"].append({"type": "surrender", "player": actor_clean})
         board_url = state.get("board_image") or render_board_image(board, state, last_uci)
         save_state(state)
         update_readme(render_section(state, board_url))
-        write_output("ok", f"🏳️ @{actor_clean} voted to surrender ({len(votes)} vote(s)).")
+        write_output("ok", f"🏳️ @{actor_clean} voted to surrender ({new_count} vote(s)).")
         return
 
     match = re.match(r"^chess:\s*([a-h][1-8][a-h][1-8][qrbn]?)$", title, flags=re.I)
@@ -513,10 +537,8 @@ def main() -> None:
             suffix = f" Saved as {archived}." if archived else ""
             msg = f"🤝 Game drawn! Starting a new game.{suffix}"
 
-        state["fen"] = chess.STARTING_FEN
-        state["moves"] = []
-        state["surrender_votes"] = []
-        board_url = render_board_image(chess.Board(chess.STARTING_FEN), state, None)
+        board = reset_match_state(state)
+        board_url = render_board_image(board, state, None)
     else:
         state["fen"] = board.fen()
         board_url = render_board_image(board, state, uci)

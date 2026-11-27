@@ -255,8 +255,9 @@ def render_section(state: dict, board_url: str) -> str:
         turn_banner += " ⚠️ **CHECK!**"
 
     return "\n".join([
-        "<!-- CHESS_START -->",
+       "<!-- CHESS_START -->",
         "### ♟️ Play chess with me!",
+        "*It's **me vs. the whole world**, team up with other visitors to outsmart me and claim a win for the guests!*",
         "",
         turn_banner,
         "",
@@ -268,7 +269,7 @@ def render_section(state: dict, board_url: str) -> str:
         "",
         render_moves_table(board),
         "",
-        f"**Surrender votes ({len(votes)})** — [🏳️ Vote to surrender]({surrender_issue_link()})  \n*If you feel that the position is lost, you can vote to surrender. If I see enough votes, I will reset the match and mark it as a win.*",
+        f"**Surrender votes ({len(votes)})** [🏳️ Vote to surrender]({surrender_issue_link()})  \n*If you feel that the position is lost, you can vote to surrender. If I see two votes in a row, I will reset the board and mark it as a win.*",
         "",
         "#### How to play",
         f"Click a move link in **FROM → TO** to open a pre-filled Issue, then click **Create new issue**. GitHub Actions validates the move, updates the board, and closes the Issue. *(Inspired by [timburgan](https://github.com/timburgan)).*",

@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 import json
 import os
 import re
@@ -5,12 +6,14 @@ import secrets
 import urllib.parse
 from pathlib import Path
 import chess
+import chess.pgn
 from PIL import Image, ImageDraw, ImageFont
 
 OWNER = "Krzys3n"
 REPO = "Krzys3n"
 ALLOW_OWNER_PLAY_WHITE = False  # Set to False after testing
 STATE_PATH = Path("chess_games/state.json")
+HISTORY_DIR = Path("chess_games/history")
 BOARD_DIR = Path("chess_images")
 README_PATH = Path("README.md")
 
@@ -40,6 +43,7 @@ def load_state() -> dict:
             "leaderboard": {},
             "score": {"guests": 0, "owner": 0, "draws": 0},
             "surrender_votes": [],
+            "game_number": 1,
             "board_image": None,
         }
 
@@ -58,12 +62,88 @@ def load_state() -> dict:
     if not isinstance(votes, list):
         state["surrender_votes"] = []
 
+    game_number = state.get("game_number", 1)
+    if not isinstance(game_number, int) or game_number < 1:
+        state["game_number"] = 1
+
     return state
 
 
 def save_state(state: dict) -> None:
     STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
     STATE_PATH.write_text(json.dumps(state, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
+def archive_finished_game(state: dict, reason: str, pgn_result: str) -> str | None:
+    board_moves = [m for m in state.get("moves", []) if m.get("type") != "surrender" and m.get("uci")]
+    surrender_votes = list(state.get("surrender_votes", []))
+
+    if not board_moves and not surrender_votes:
+        return None
+
+    HISTORY_DIR.mkdir(parents=True, exist_ok=True)
+    game_num = state.get("game_number", 1)
+    stem = f"game_{game_num:03d}"
+
+    replay_board = chess.Board()
+    pgn_game = chess.pgn.Game()
+    pgn_game.headers["Event"] = f"{OWNER} Community Chess #{game_num}"
+    pgn_game.headers["Site"] = f"https://github.com/{OWNER}/{REPO}"
+    pgn_game.headers["Date"] = datetime.now(timezone.utc).strftime("%Y.%m.%d")
+    pgn_game.headers["Round"] = str(game_num)
+    pgn_game.headers["White"] = "Guests"
+    pgn_game.headers["Black"] = OWNER
+    pgn_game.headers["Result"] = pgn_result
+
+    node = pgn_game
+    move_log = []
+    for idx, item in enumerate(board_moves, start=1):
+        uci = item["uci"]
+        player = item["player"]
+        try:
+            move = chess.Move.from_uci(uci)
+        except ValueError:
+            continue
+        if move not in replay_board.legal_moves:
+            continue
+        san = replay_board.san(move)
+        replay_board.push(move)
+        node = node.add_variation(move)
+        node.comment = f"@{player}"
+        move_log.append({
+            "ply": idx,
+            "uci": uci,
+            "san": san,
+            "player": player,
+        })
+
+    pgn_path = HISTORY_DIR / f"{stem}.pgn"
+    exporter = chess.pgn.FileExporter(pgn_path.open("w", encoding="utf-8"))
+    pgn_game.accept(exporter)
+
+    unique_guests = sorted({
+        m["player"] for m in move_log if m["player"].lower() != OWNER.lower()
+    }, key=str.lower)
+
+    stats = {
+        "game_number": game_num,
+        "ended_at_utc": datetime.now(timezone.utc).isoformat(),
+        "reason": reason,
+        "pgn_result": pgn_result,
+        "total_plies": len(move_log),
+        "unique_guests_count": len(unique_guests),
+        "unique_guests": unique_guests,
+        "surrender_votes_count": len(surrender_votes),
+        "surrender_votes": surrender_votes,
+        "score_after": dict(state.get("score", {})),
+        "moves": move_log,
+    }
+
+    json_path = HISTORY_DIR / f"{stem}.json"
+    json_path.write_text(json.dumps(stats, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    state["game_number"] = game_num + 1
+    return stem
 
 
 def cleanup_old_boards(keep_path: Path) -> None:
@@ -255,7 +335,7 @@ def render_section(state: dict, board_url: str) -> str:
         turn_banner += " ⚠️ **CHECK!**"
 
     return "\n".join([
-       "<!-- CHESS_START -->",
+        "<!-- CHESS_START -->",
         "### ♟️ Play chess with me!",
         "*It's **me vs. the whole world**, team up with other visitors to outsmart me and claim a win for the guests!*",
         "",
@@ -328,15 +408,23 @@ def main() -> None:
         if reset_mode in {"reset_only", "owner_win", "guests_win", "draw"}:
             if reset_mode == "owner_win":
                 state["score"]["owner"] += 1
-                result_msg = f"Game reset — +1 win awarded to @{OWNER}."
+                archived = archive_finished_game(state, "manual_owner_win", "0-1")
+                suffix = f" Saved as {archived}." if archived else ""
+                result_msg = f"Game reset — +1 win awarded to @{OWNER}.{suffix}"
             elif reset_mode == "guests_win":
                 state["score"]["guests"] += 1
-                result_msg = "Game reset — +1 win awarded to Guests."
+                archived = archive_finished_game(state, "manual_guests_win", "1-0")
+                suffix = f" Saved as {archived}." if archived else ""
+                result_msg = f"Game reset — +1 win awarded to Guests.{suffix}"
             elif reset_mode == "draw":
                 state["score"]["draws"] += 1
-                result_msg = "Game reset — +1 draw recorded."
+                archived = archive_finished_game(state, "manual_draw", "1/2-1/2")
+                suffix = f" Saved as {archived}." if archived else ""
+                result_msg = f"Game reset — +1 draw recorded.{suffix}"
             else:
-                result_msg = "Game reset to starting position."
+                archived = archive_finished_game(state, "manual_reset", "*")
+                suffix = f" Saved as {archived}." if archived else ""
+                result_msg = f"Game reset to starting position.{suffix}"
 
             state["fen"] = chess.STARTING_FEN
             state["moves"] = []
@@ -409,13 +497,19 @@ def main() -> None:
         outcome = board.outcome()
         if outcome and outcome.winner == chess.WHITE:
             state["score"]["guests"] += 1
-            msg = f"🎉 Checkmate! Guests (last move: @{actor}) win the game! Starting a new game."
+            archived = archive_finished_game(state, "checkmate_white", "1-0")
+            suffix = f" Saved as {archived}." if archived else ""
+            msg = f"🎉 Checkmate! Guests (last move: @{actor}) win the game! Starting a new game.{suffix}"
         elif outcome and outcome.winner == chess.BLACK:
             state["score"]["owner"] += 1
-            msg = f"👑 Checkmate! @{OWNER} wins the game! Starting a new game."
+            archived = archive_finished_game(state, "checkmate_black", "0-1")
+            suffix = f" Saved as {archived}." if archived else ""
+            msg = f"👑 Checkmate! @{OWNER} wins the game! Starting a new game.{suffix}"
         else:
             state["score"]["draws"] += 1
-            msg = "🤝 Game drawn! Starting a new game."
+            archived = archive_finished_game(state, "draw", "1/2-1/2")
+            suffix = f" Saved as {archived}." if archived else ""
+            msg = f"🤝 Game drawn! Starting a new game.{suffix}"
 
         state["fen"] = chess.STARTING_FEN
         state["moves"] = []

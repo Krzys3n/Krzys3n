@@ -1,5 +1,5 @@
 {
-  "fen": "rn2k2r/pp3pp1/2p4p/2b1p1n1/3q4/3B1Q1P/PPPP3P/RNB1K2R w KQkq - 2 12",
+  "fen": "rn2k2r/pp3pp1/2p4p/2b1p1n1/3q4/2PB1Q1P/PP1P3P/RNB1K2R b KQkq - 0 12",
   "moves": [
     {
       "uci": "e2e4",
@@ -88,19 +88,24 @@
     {
       "uci": "e4g5",
       "player": "Krzys3n"
+    },
+    {
+      "uci": "c2c3",
+      "player": "uriel346as"
     }
   ],
   "leaderboard": {
     "Mniok": 7,
     "Shiro99x": 1,
-    "Zafkieli": 1
+    "Zafkieli": 1,
+    "uriel346as": 1
   },
   "score": {
     "owner": 0,
     "draws": 0,
     "guests": 0
   },
-  "board_image": "chess_images/board_22_e4g5_f22c1b15.png",
+  "board_image": "chess_images/board_23_c2c3_05804cb1.png",
   "surrender_votes": [
     "Krzys3n"
   ]

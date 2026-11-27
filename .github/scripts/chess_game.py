@@ -365,7 +365,7 @@ def render_section(state: dict, board_url: str) -> str:
         "",
         render_leaderboard(state),
         "",
-        f"📜 *Past games history (PGN & stats) can be viewed [here](https://github.com/{OWNER}/{REPO}/tree/main/chess_games/history).*",
+        f"📜 *Past games history (PGN & stats) will be saved [here](https://github.com/{OWNER}/{REPO}/tree/main/chess_games/history).*",
         "<!-- CHESS_END -->",
     ])
 

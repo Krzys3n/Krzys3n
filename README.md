@@ -38,7 +38,7 @@ Feel free to share my profile with friends who know the rules of chess and team 
 
 | Move | Who |
 | :--- | :--- |
-| 🏳️ Surrender vote | [@Krzys3n](https://github.com/Krzys3n) |
+| 🏳️ Surrender vote | [@Mniok](https://github.com/Mniok) |
 | D4 to H4 | [@Krzys3n](https://github.com/Krzys3n) |
 | C2 to C3 | [@uriel346as](https://github.com/uriel346as) |
 | E4 to G5 | [@Krzys3n](https://github.com/Krzys3n) |
@@ -53,5 +53,5 @@ Feel free to share my profile with friends who know the rules of chess and team 
 | 1 | [@uriel346as](https://github.com/uriel346as) |
 | 1 | [@Zafkieli](https://github.com/Zafkieli) |
 
-📜 *Past games history (PGN & stats) can be viewed [here](https://github.com/Krzys3n/Krzys3n/tree/main/chess_games/history).*
+📜 *Past games history (PGN & stats) will be saved [here](https://github.com/Krzys3n/Krzys3n/tree/main/chess_games/history).*
 <!-- CHESS_END -->

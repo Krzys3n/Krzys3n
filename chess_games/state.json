@@ -96,6 +96,10 @@
     {
       "uci": "d4h4",
       "player": "Krzys3n"
+    },
+    {
+      "type": "surrender",
+      "player": "Mniok"
     }
   ],
   "leaderboard": {
@@ -111,5 +115,6 @@
   },
   "board_image": "chess_images/board_24_d4h4_30bada64.png",
   "surrender_votes": [
+    "Mniok"
   ]
 }

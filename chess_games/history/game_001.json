@@ -1,0 +1,268 @@
+{
+  "game_number": 1,
+  "ended_at_utc": "2026-11-27T19:52:09.423129+00:00",
+  "reason": "manual_owner_win",
+  "pgn_result": "0-1",
+  "total_plies": 41,
+  "unique_guests_count": 4,
+  "unique_guests": [
+    "Mniok",
+    "Shiro99x",
+    "uriel346as",
+    "Zafkieli"
+  ],
+  "surrender_votes_count": 2,
+  "score_after": {
+    "owner": 1,
+    "draws": 0,
+    "guests": 0
+  },
+  "moves": [
+    {
+      "ply": 1,
+      "uci": "e2e4",
+      "san": "e4",
+      "player": "Mniok"
+    },
+    {
+      "ply": 2,
+      "uci": "g8f6",
+      "san": "Nf6",
+      "player": "Krzys3n"
+    },
+    {
+      "ply": 3,
+      "uci": "f2f3",
+      "san": "f3",
+      "player": "Mniok"
+    },
+    {
+      "ply": 4,
+      "uci": "e7e5",
+      "san": "e5",
+      "player": "Krzys3n"
+    },
+    {
+      "ply": 5,
+      "uci": "g1h3",
+      "san": "Nh3",
+      "player": "Mniok"
+    },
+    {
+      "ply": 6,
+      "uci": "d7d5",
+      "san": "d5",
+      "player": "Krzys3n"
+    },
+    {
+      "ply": 7,
+      "uci": "h3g5",
+      "san": "Ng5",
+      "player": "Mniok"
+    },
+    {
+      "ply": 8,
+      "uci": "h7h6",
+      "san": "h6",
+      "player": "Krzys3n"
+    },
+    {
+      "ply": 9,
+      "uci": "g5h3",
+      "san": "Nh3",
+      "player": "Mniok"
+    },
+    {
+      "ply": 10,
+      "uci": "c8h3",
+      "san": "Bxh3",
+      "player": "Krzys3n"
+    },
+    {
+      "ply": 11,
+      "uci": "g2h3",
+      "san": "gxh3",
+      "player": "Mniok"
+    },
+    {
+      "ply": 12,
+      "uci": "d5e4",
+      "san": "dxe4",
+      "player": "Krzys3n"
+    },
+    {
+      "ply": 13,
+      "uci": "f3e4",
+      "san": "fxe4",
+      "player": "Krzys3n"
+    },
+    {
+      "ply": 14,
+      "uci": "f6e4",
+      "san": "Nxe4",
+      "player": "Krzys3n"
+    },
+    {
+      "ply": 15,
+      "uci": "d1g4",
+      "san": "Qg4",
+      "player": "Krzys3n"
+    },
+    {
+      "ply": 16,
+      "uci": "d8d4",
+      "san": "Qd4",
+      "player": "Krzys3n"
+    },
+    {
+      "ply": 17,
+      "uci": "g4f3",
+      "san": "Qf3",
+      "player": "Shiro99x"
+    },
+    {
+      "ply": 18,
+      "uci": "f8c5",
+      "san": "Bc5",
+      "player": "Krzys3n"
+    },
+    {
+      "ply": 19,
+      "uci": "f1b5",
+      "san": "Bb5+",
+      "player": "Mniok"
+    },
+    {
+      "ply": 20,
+      "uci": "c7c6",
+      "san": "c6",
+      "player": "Krzys3n"
+    },
+    {
+      "ply": 21,
+      "uci": "b5d3",
+      "san": "Bd3",
+      "player": "Zafkieli"
+    },
+    {
+      "ply": 22,
+      "uci": "e4g5",
+      "san": "Ng5",
+      "player": "Krzys3n"
+    },
+    {
+      "ply": 23,
+      "uci": "c2c3",
+      "san": "c3",
+      "player": "uriel346as"
+    },
+    {
+      "ply": 24,
+      "uci": "d4h4",
+      "san": "Qh4+",
+      "player": "Krzys3n"
+    },
+    {
+      "ply": 25,
+      "uci": "f3g3",
+      "san": "Qg3",
+      "player": "Mniok"
+    },
+    {
+      "ply": 26,
+      "uci": "h4g3",
+      "san": "Qxg3+",
+      "player": "Krzys3n"
+    },
+    {
+      "ply": 27,
+      "uci": "h2g3",
+      "san": "hxg3",
+      "player": "Mniok"
+    },
+    {
+      "ply": 28,
+      "uci": "b8d7",
+      "san": "Nd7",
+      "player": "Krzys3n"
+    },
+    {
+      "ply": 29,
+      "uci": "b2b4",
+      "san": "b4",
+      "player": "Mniok"
+    },
+    {
+      "ply": 30,
+      "uci": "c5d6",
+      "san": "Bd6",
+      "player": "Krzys3n"
+    },
+    {
+      "ply": 31,
+      "uci": "h3h4",
+      "san": "h4",
+      "player": "Mniok"
+    },
+    {
+      "ply": 32,
+      "uci": "e5e4",
+      "san": "e4",
+      "player": "Krzys3n"
+    },
+    {
+      "ply": 33,
+      "uci": "d3e2",
+      "san": "Be2",
+      "player": "Mniok"
+    },
+    {
+      "ply": 34,
+      "uci": "d6g3",
+      "san": "Bxg3+",
+      "player": "Krzys3n"
+    },
+    {
+      "ply": 35,
+      "uci": "e1d1",
+      "san": "Kd1",
+      "player": "Mniok"
+    },
+    {
+      "ply": 36,
+      "uci": "g5f3",
+      "san": "Nf3",
+      "player": "Krzys3n"
+    },
+    {
+      "ply": 37,
+      "uci": "d2d3",
+      "san": "d3",
+      "player": "Mniok"
+    },
+    {
+      "ply": 38,
+      "uci": "f7f5",
+      "san": "f5",
+      "player": "Krzys3n"
+    },
+    {
+      "ply": 39,
+      "uci": "h1g1",
+      "san": "Rg1",
+      "player": "Mniok"
+    },
+    {
+      "ply": 40,
+      "uci": "f3g1",
+      "san": "Nxg1",
+      "player": "Krzys3n"
+    },
+    {
+      "ply": 41,
+      "uci": "d3e4",
+      "san": "dxe4",
+      "player": "Mniok"
+    }
+  ]
+}

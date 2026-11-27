@@ -1,5 +1,5 @@
 {
-  "fen": "rnbq1rk1/pp2ppbp/2pp1np1/8/8/1B2P3/PPPP1PPP/RNBQK1NR w KQ - 6 7",
+  "fen": "rnbq1rk1/pp2ppbp/2pp1np1/8/2P5/1B2P3/PP1P1PPP/RNBQK1NR b KQ - 0 7",
   "moves": [
     {
       "type": "move",
@@ -60,6 +60,11 @@
       "type": "move",
       "uci": "e8g8",
       "player": "Krzys3n"
+    },
+    {
+      "type": "move",
+      "uci": "c2c4",
+      "player": "Nlxtz"
     }
   ],
   "leaderboard": {
@@ -67,14 +72,14 @@
     "Shiro99x": 1,
     "Zafkieli": 1,
     "uriel346as": 1,
-    "Nlxtz": 1
+    "Nlxtz": 2
   },
   "score": {
     "owner": 1,
     "draws": 0,
     "guests": 0
   },
-  "board_image": "chess_images/board_12_e8g8_01194f28.png",
+  "board_image": "chess_images/board_13_c2c4_df4d9cbb.png",
   "surrender_votes_count": 0,
   "last_surrender_voter": null,
   "game_number": 2

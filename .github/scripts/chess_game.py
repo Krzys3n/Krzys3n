@@ -326,7 +326,7 @@ def render_leaderboard(state: dict) -> str:
     board_data = {
         k: v for k, v in state.get("leaderboard", {}).items() if k.lower() != OWNER.lower()
     }
-    ranked = sorted(board_data.items(), key=lambda x: (-x[1], x[0].lower()))[:10]
+    ranked = sorted(board_data.items(), key=lambda x: (-x[1], x[0].lower()))[:20]
     lines = ["| Moves | Guest |", "| :---: | :--- |"]
     if not ranked:
         lines.append("| 0 | No guest moves recorded yet |")

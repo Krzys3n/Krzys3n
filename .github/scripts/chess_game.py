@@ -260,7 +260,27 @@ def render_board_image(board: chess.Board, state: dict, last_uci: str | None = N
                 h = bbox[3] - bbox[1]
                 px = x_left + (SQUARE_SIZE - w) / 2 - bbox[0]
                 py = y_top + (SQUARE_SIZE - h) / 2 - bbox[1]
-                draw.text((px, py), glyph, fill=(22, 22, 22), font=piece_font)
+
+                if piece.color == chess.WHITE:
+                    pad = int(SQUARE_SIZE * 0.24)
+                    draw.ellipse(
+                        [
+                            x_left + pad,
+                            y_top + pad,
+                            x_left + SQUARE_SIZE - pad,
+                            y_top + SQUARE_SIZE - pad,
+                        ],
+                        fill=(248, 244, 236),
+                        outline=(30, 24, 20),
+                        width=2,
+                    )
+                    for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                        draw.text((px + dx, py + dy), glyph, fill=(25, 20, 16), font=piece_font)
+                    draw.text((px, py), glyph, fill=(255, 252, 245), font=piece_font)
+                else:
+                    for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                        draw.text((px + dx, py + dy), glyph, fill=(235, 220, 195), font=piece_font)
+                    draw.text((px, py), glyph, fill=(20, 20, 20), font=piece_font)
 
     img.save(out_path)
     cleanup_old_boards(out_path)

@@ -65,7 +65,7 @@ def load_state() -> dict:
     game_number = state.get("game_number", 1)
     if not isinstance(game_number, int) or game_number < 1:
         state["game_number"] = 1
-
+    HISTORY_DIR.mkdir(parents=True, exist_ok=True)
     return state
 
 

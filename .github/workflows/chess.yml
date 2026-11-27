@@ -70,6 +70,7 @@ jobs:
             });
 
       - name: Commit updated board
+        id: commit
         if: steps.game.outputs.status == 'ok'
         run: |
           git config user.name "github-actions[bot]"
@@ -78,4 +79,52 @@ jobs:
           if [ -d "chess_games/history" ] && [ "$(ls -A chess_games/history)" ]; then
             git add -A -- chess_games/history/
           fi
-          git diff --staged --quiet || (git commit -m "chess: update board" && git push)
+          if git diff --staged --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "chess: update board"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Notify Discord webhook
+        if: steps.game.outputs.status == 'ok' && steps.commit.outputs.changed == 'true' && env.DISCORD_WEBHOOK_URL != ''
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          CHESS_MESSAGE: ${{ steps.game.outputs.message }}
+          ACTOR: ${{ github.actor }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          RESET_MODE: ${{ inputs.reset_mode || 'none' }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          python3 -c '
+          import json, os, urllib.request
+
+          url = os.environ.get("DISCORD_WEBHOOK_URL", "").strip()
+          msg = os.environ.get("CHESS_MESSAGE", "").strip()
+          actor = os.environ.get("ACTOR", "").strip()
+          title = os.environ.get("ISSUE_TITLE", "").strip()
+          event_name = os.environ.get("EVENT_NAME", "")
+          reset_mode = os.environ.get("RESET_MODE", "none")
+
+          if not url or not msg:
+              raise SystemExit(0)
+
+          lines = [f"♟️ **{msg}**"]
+          if event_name == "issues" and title:
+              lines.append(f"Akcja: `{title}` od **@{actor}**")
+          elif event_name == "workflow_dispatch":
+              lines.append(f"Ręczne odświeżenie/reset (`{reset_mode}`) przez **@{actor}**")
+
+          payload = json.dumps({"content": "\n".join(lines)}).encode("utf-8")
+          req = urllib.request.Request(
+              url,
+              data=payload,
+              headers={
+                  "Content-Type": "application/json",
+                  "User-Agent": "CommunityChessNotifier/1.0",
+              },
+              method="POST",
+          )
+          urllib.request.urlopen(req, timeout=15)
+          '

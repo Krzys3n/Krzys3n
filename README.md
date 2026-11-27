@@ -52,4 +52,6 @@ Feel free to share my profile with friends who know the rules of chess and team 
 | 1 | [@Shiro99x](https://github.com/Shiro99x) |
 | 1 | [@uriel346as](https://github.com/uriel346as) |
 | 1 | [@Zafkieli](https://github.com/Zafkieli) |
+
+📜 *Past games history (PGN & stats) can be viewed [here](https://github.com/Krzys3n/Krzys3n/tree/main/chess_games/history).*
 <!-- CHESS_END -->

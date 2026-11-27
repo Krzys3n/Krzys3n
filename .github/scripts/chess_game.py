@@ -364,6 +364,8 @@ def render_section(state: dict, board_url: str) -> str:
         "#### Guest Leaderboard",
         "",
         render_leaderboard(state),
+        "",
+        f"📜 *Past games history (PGN & stats) can be viewed [here](https://github.com/{OWNER}/{REPO}/tree/main/chess_games/history).*",
         "<!-- CHESS_END -->",
     ])
 

@@ -264,25 +264,35 @@ def render_board_image(board: chess.Board, state: dict, last_uci: str | None = N
                 if piece.color == chess.WHITE:
                     # Tymczasowy kwadrat pola do wypełnienia wnętrza białej figury
                     cell_img = img.crop((x_left, y_top, x_left + SQUARE_SIZE, y_top + SQUARE_SIZE)).copy()
-                    cell_draw = ImageDraw.Draw(cell_img)
                     lx = px - x_left
                     ly = py - y_top
 
-                    outline_color = (30, 22, 16)
+                    # Maska robocza: tło (0, 0, 0), kontur figury (255, 255, 255)
+                    mask = Image.new("RGB", (SQUARE_SIZE, SQUARE_SIZE), (0, 0, 0))
+                    mdraw = ImageDraw.Draw(mask)
+                    for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1), (-1, -1), (1, -1), (-1, 1), (1, 1)]:
+                        mdraw.text((lx + dx, ly + dy), glyph, fill=(255, 255, 255), font=piece_font)
+                    mdraw.text((lx, ly), glyph, fill=(255, 255, 255), font=piece_font)
+
+                    # Zalewamy zewnętrze pola z narożnika (1, 1) innym kolorem -> zostaje kontur + wnętrza
+                    outside = mask.copy()
+                    ImageDraw.floodfill(outside, (1, 1), (128, 0, 128), thresh=30)
+
+                    # Piksele, które NIE są tłem (128, 0, 128) i NIE są samym konturem -> wypełniamy na biało
+                    px_cell = cell_img.load()
+                    px_out = outside.load()
+                    px_mask = mask.load()
+                    for yy in range(SQUARE_SIZE):
+                        for xx in range(SQUARE_SIZE):
+                            if px_out[xx, yy] != (128, 0, 128) and px_mask[xx, yy][0] < 128:
+                                px_cell[xx, yy] = (252, 250, 245)
+
+                    # Wyraźny ciemny obrys figury na wierzchu + białe kreski
+                    cdraw = ImageDraw.Draw(cell_img)
+                    outline_color = (28, 20, 14)
                     for dx, dy in [(-2, 0), (2, 0), (0, -2), (0, 2), (-1, -1), (1, -1), (-1, 1), (1, 1)]:
-                        cell_draw.text((lx + dx, ly + dy), glyph, fill=outline_color, font=piece_font)
-                    cell_draw.text((lx, ly), glyph, fill=outline_color, font=piece_font)
-
-                    # Wypełnienie wnętrza białej figury od środka pola (w granicach figury)
-                    cx = int(SQUARE_SIZE / 2)
-                    cy = int(SQUARE_SIZE * 0.58)
-                    if 0 <= cx < SQUARE_SIZE and 0 <= cy < SQUARE_SIZE:
-                        ImageDraw.floodfill(cell_img, (cx, cy), (250, 248, 243), thresh=45)
-
-                    # Ponowne narysowanie wyraźnego ciemnego obrysu na wierzchu
-                    for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
-                        cell_draw.text((lx + dx, ly + dy), glyph, fill=outline_color, font=piece_font)
-                    cell_draw.text((lx, ly), glyph, fill=(255, 255, 255), font=piece_font)
+                        cdraw.text((lx + dx, ly + dy), glyph, fill=outline_color, font=piece_font)
+                    cdraw.text((lx, ly), glyph, fill=(255, 255, 255), font=piece_font)
 
                     img.paste(cell_img, (x_left, y_top))
                 else:

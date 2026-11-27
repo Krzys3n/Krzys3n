@@ -1,5 +1,5 @@
 {
-  "fen": "r3k2r/pp1n2p1/2p4p/5p2/1P2p2P/2PP1nb1/P3B3/RNBK3R w kq - 0 20",
+  "fen": "r3k2r/pp1n2p1/2p4p/5p2/1P2p2P/2PP1nb1/P3B3/RNBK2R1 b kq - 1 20",
   "moves": [
     {
       "uci": "e2e4",
@@ -170,10 +170,15 @@
       "type": "move",
       "uci": "f7f5",
       "player": "Krzys3n"
+    },
+    {
+      "type": "move",
+      "uci": "h1g1",
+      "player": "Mniok"
     }
   ],
   "leaderboard": {
-    "Mniok": 14,
+    "Mniok": 15,
     "Shiro99x": 1,
     "Zafkieli": 1,
     "uriel346as": 1
@@ -183,7 +188,7 @@
     "draws": 0,
     "guests": 0
   },
-  "board_image": "chess_images/board_38_f7f5_28224728.png",
+  "board_image": "chess_images/board_39_h1g1_ae010815.png",
   "surrender_votes_count": 1,
   "last_surrender_voter": null
 }

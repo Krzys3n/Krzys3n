@@ -180,6 +180,10 @@
       "type": "move",
       "uci": "f3g1",
       "player": "Krzys3n"
+    },
+    {
+      "type": "surrender",
+      "player": "Mniok"
     }
   ],
   "leaderboard": {
@@ -194,6 +198,6 @@
     "guests": 0
   },
   "board_image": "chess_images/board_40_f3g1_3a20bc41.png",
-  "surrender_votes_count": 1,
-  "last_surrender_voter": null
+  "surrender_votes_count": 2,
+  "last_surrender_voter": "Mniok"
 }

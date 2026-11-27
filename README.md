@@ -32,7 +32,7 @@ YouTube creator | Chess player | Gamer | Tech enthusiast
 | **E2** | [H5](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20e2h5&body=Chess%20move%3A%20%60e2h5%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [G4](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20e2g4&body=Chess%20move%3A%20%60e2g4%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [F3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20e2f3&body=Chess%20move%3A%20%60e2f3%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [F1](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20e2f1&body=Chess%20move%3A%20%60e2f1%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
 | **H4** | [H5](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20h4h5&body=Chess%20move%3A%20%60h4h5%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
 
-**Surrender votes (1)** [🏳️ Vote to surrender](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20surrender&body=Vote%20to%20surrender%20the%20current%20game.%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20submit%20your%20vote.)  
+**Surrender votes (2)** [🏳️ Vote to surrender](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20surrender&body=Vote%20to%20surrender%20the%20current%20game.%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20submit%20your%20vote.)  
 *If you feel that the position is lost, you can vote to surrender. If I see two votes in a row, I will reset the board and mark it as a win.*
 
 #### How to play
@@ -45,11 +45,11 @@ Feel free to share my profile with friends who know the rules of chess and team 
 
 | Move | Who |
 | :--- | :--- |
+| 🏳️ Surrender vote | [@Mniok](https://github.com/Mniok) |
 | F3 to G1 | [@Krzys3n](https://github.com/Krzys3n) |
 | H1 to G1 | [@Mniok](https://github.com/Mniok) |
 | F7 to F5 | [@Krzys3n](https://github.com/Krzys3n) |
 | D2 to D3 | [@Mniok](https://github.com/Mniok) |
-| G5 to F3 | [@Krzys3n](https://github.com/Krzys3n) |
 
 #### Guest Leaderboard
 

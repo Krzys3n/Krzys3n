@@ -12,26 +12,26 @@ YouTube creator | Chess player | Gamer | Tech enthusiast
 ### ♟️ Play chess with me!
 *It's **me vs. the whole world**, team up with other visitors to outsmart me and claim a win for the guests!*
 
-⬜ **Your turn! Play White (bottom).** Any guest can make the next move.
+⬛ **@Krzys3n's turn (Black — top).** Restricted to the profile owner.
 
 **Series score:** Krzys3n **1** : **0** Guests *(Draws: 0)*
 
-![Wooden Chessboard](chess_images/board_0_start_261aec6f.png)
+![Wooden Chessboard](chess_images/board_1_e2e3_e658b3d6.png)
 
 #### 🎯 Choose a move (FROM → TO)
 
 | FROM | TO - click a move |
 | :---: | :--- |
-| **A2** | [A3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20a2a3&body=Chess%20move%3A%20%60a2a3%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [A4](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20a2a4&body=Chess%20move%3A%20%60a2a4%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
-| **B1** | [C3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20b1c3&body=Chess%20move%3A%20%60b1c3%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [A3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20b1a3&body=Chess%20move%3A%20%60b1a3%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
-| **B2** | [B3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20b2b3&body=Chess%20move%3A%20%60b2b3%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [B4](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20b2b4&body=Chess%20move%3A%20%60b2b4%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
-| **C2** | [C3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20c2c3&body=Chess%20move%3A%20%60c2c3%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [C4](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20c2c4&body=Chess%20move%3A%20%60c2c4%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
-| **D2** | [D3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20d2d3&body=Chess%20move%3A%20%60d2d3%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [D4](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20d2d4&body=Chess%20move%3A%20%60d2d4%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
-| **E2** | [E3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20e2e3&body=Chess%20move%3A%20%60e2e3%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [E4](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20e2e4&body=Chess%20move%3A%20%60e2e4%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
-| **F2** | [F3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20f2f3&body=Chess%20move%3A%20%60f2f3%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [F4](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20f2f4&body=Chess%20move%3A%20%60f2f4%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
-| **G1** | [H3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20g1h3&body=Chess%20move%3A%20%60g1h3%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [F3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20g1f3&body=Chess%20move%3A%20%60g1f3%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
-| **G2** | [G3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20g2g3&body=Chess%20move%3A%20%60g2g3%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [G4](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20g2g4&body=Chess%20move%3A%20%60g2g4%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
-| **H2** | [H3](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20h2h3&body=Chess%20move%3A%20%60h2h3%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [H4](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20h2h4&body=Chess%20move%3A%20%60h2h4%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
+| **A7** | [A6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20a7a6&body=Chess%20move%3A%20%60a7a6%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [A5](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20a7a5&body=Chess%20move%3A%20%60a7a5%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
+| **B7** | [B6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20b7b6&body=Chess%20move%3A%20%60b7b6%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [B5](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20b7b5&body=Chess%20move%3A%20%60b7b5%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
+| **B8** | [C6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20b8c6&body=Chess%20move%3A%20%60b8c6%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [A6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20b8a6&body=Chess%20move%3A%20%60b8a6%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
+| **C7** | [C6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20c7c6&body=Chess%20move%3A%20%60c7c6%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [C5](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20c7c5&body=Chess%20move%3A%20%60c7c5%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
+| **D7** | [D6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20d7d6&body=Chess%20move%3A%20%60d7d6%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [D5](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20d7d5&body=Chess%20move%3A%20%60d7d5%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
+| **E7** | [E6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20e7e6&body=Chess%20move%3A%20%60e7e6%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [E5](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20e7e5&body=Chess%20move%3A%20%60e7e5%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
+| **F7** | [F6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20f7f6&body=Chess%20move%3A%20%60f7f6%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [F5](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20f7f5&body=Chess%20move%3A%20%60f7f5%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
+| **G7** | [G6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20g7g6&body=Chess%20move%3A%20%60g7g6%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [G5](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20g7g5&body=Chess%20move%3A%20%60g7g5%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
+| **G8** | [H6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20g8h6&body=Chess%20move%3A%20%60g8h6%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [F6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20g8f6&body=Chess%20move%3A%20%60g8f6%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
+| **H7** | [H6](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20h7h6&body=Chess%20move%3A%20%60h7h6%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.), [H5](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20h7h5&body=Chess%20move%3A%20%60h7h5%60%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20play%20this%20move.) |
 
 **Surrender votes (0)** [🏳️ Vote to surrender](https://github.com/Krzys3n/Krzys3n/issues/new?title=chess%3A%20surrender&body=Vote%20to%20surrender%20the%20current%20game.%0A%0AClick%20%2A%2ACreate%20new%20issue%2A%2A%20to%20submit%20your%20vote.)  
 *If you feel that the position is lost, you can vote to surrender. If I see two votes in a row, I will reset the board and mark it as a win.*
@@ -46,13 +46,13 @@ Feel free to share my profile with friends who know the rules of chess and team 
 
 | Move | Who |
 | :--- | :--- |
-| — | Waiting for the first move |
+| E2 to E3 | [@Mniok](https://github.com/Mniok) |
 
 #### Guest Leaderboard
 
 | Moves | Guest |
 | :---: | :--- |
-| 16 | [@Mniok](https://github.com/Mniok) |
+| 17 | [@Mniok](https://github.com/Mniok) |
 | 1 | [@Shiro99x](https://github.com/Shiro99x) |
 | 1 | [@uriel346as](https://github.com/uriel346as) |
 | 1 | [@Zafkieli](https://github.com/Zafkieli) |

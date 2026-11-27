@@ -274,7 +274,7 @@ def render_section(state: dict, board_url: str) -> str:
         f"Click a move link in **FROM → TO** to open a pre-filled Issue, then click **Create new issue**. GitHub Actions validates the move, updates the board, and closes the Issue. *(Inspired by [timburgan](https://github.com/timburgan)).*",
         "",
         "#### 🤝 Fair play & community",
-        "Feel free to share my profile with friends who know the rules of chess and team up with them to find the best move! As a gentleman's agreement, **no chess engines** — I play my moves on my own, and you play yours with pure human brainpower.",
+        "Feel free to share my profile with friends who know the rules of chess and team up with them to find the best move! As a gentleman's agreement, **no chess engines** I play my moves on my own, and you play yours with pure human brainpower.",
         "",
         "#### Last few moves",
         "",

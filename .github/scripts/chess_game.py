@@ -77,7 +77,7 @@ def cleanup_old_boards(keep_path: Path) -> None:
 
 def render_board_image(board: chess.Board, state: dict, last_uci: str | None = None) -> str:
     BOARD_DIR.mkdir(parents=True, exist_ok=True)
-    step_num = len(state.get("moves", []))
+    step_num = sum(1 for m in state.get("moves", []) if m.get("type") != "surrender")
     move_part = last_uci.lower() if last_uci else "start"
     token = secrets.token_hex(4)
     rel_path = f"chess_images/board_{step_num}_{move_part}_{token}.png"
@@ -217,9 +217,12 @@ def render_recent_moves(state: dict) -> str:
         lines.append("| — | Waiting for the first move |")
     else:
         for item in recent:
-            src = item["uci"][:2].upper()
-            dst = item["uci"][2:4].upper()
-            lines.append(f"| {src} to {dst} | {profile_link(item['player'])} |")
+            if item.get("type") == "surrender":
+                lines.append(f"| 🏳️ Surrender vote | {profile_link(item['player'])} |")
+            else:
+                src = item["uci"][:2].upper()
+                dst = item["uci"][2:4].upper()
+                lines.append(f"| {src} to {dst} | {profile_link(item['player'])} |")
     return "\n".join(lines)
 
 
@@ -270,6 +273,9 @@ def render_section(state: dict, board_url: str) -> str:
         "#### How to play",
         f"Click a move link in **FROM → TO** to open a pre-filled Issue, then click **Create new issue**. GitHub Actions validates the move, updates the board, and closes the Issue. *(Inspired by [timburgan](https://github.com/timburgan)).*",
         "",
+        "#### 🤝 Fair play & community",
+        "Feel free to share my profile with friends who know the rules of chess and team up with them to find the best move! As a gentleman's agreement, **no chess engines** — I play my moves on my own, and you play yours with pure human brainpower.",
+        "",
         "#### Last few moves",
         "",
         render_recent_moves(state),
@@ -299,11 +305,18 @@ def write_output(status: str, message: str) -> None:
             f.write(f"message={message}\n")
 
 
+def get_last_board_uci(state: dict) -> str | None:
+    for item in reversed(state.get("moves", [])):
+        if item.get("type") != "surrender" and item.get("uci"):
+            return item["uci"]
+    return None
+
+
 def main() -> None:
     state = load_state()
     board = chess.Board(state["fen"])
     mode = os.environ.get("MODE", "render")
-    last_uci = state["moves"][-1]["uci"] if state["moves"] else None
+    last_uci = get_last_board_uci(state)
 
     reset_mode = os.environ.get("RESET_MODE", "").strip().lower()
     legacy_reset = os.environ.get("RESET_GAME", "").strip().lower() in {"true", "1", "yes"}
@@ -350,7 +363,9 @@ def main() -> None:
         if any(v.lower() == actor_clean.lower() for v in votes):
             write_output("invalid", f"@{actor_clean} already voted to surrender this game.")
             return
+
         votes.append(actor_clean)
+        state["moves"].append({"type": "surrender", "player": actor_clean})
         board_url = state.get("board_image") or render_board_image(board, state, last_uci)
         save_state(state)
         update_readme(render_section(state, board_url))
@@ -383,7 +398,7 @@ def main() -> None:
         return
 
     board.push(move)
-    state["moves"].append({"uci": uci, "player": actor})
+    state["moves"].append({"type": "move", "uci": uci, "player": actor})
 
     if actor.lower() != OWNER.lower():
         leaderboard = state.setdefault("leaderboard", {})

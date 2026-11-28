@@ -1,5 +1,5 @@
 {
-  "fen": "3rr1k1/1p3pbn/1q1p1np1/pNpP1bBp/P1P5/1B3P2/1P1QN1PP/R4R1K w - - 1 20",
+  "fen": "3rr1k1/1p3pbn/1q1p1np1/pNpP1bBp/P1P5/1B3PN1/1P1Q2PP/R4R1K b - - 2 20",
   "moves": [
     {
       "type": "move",
@@ -190,6 +190,11 @@
       "type": "move",
       "uci": "f8h7",
       "player": "Krzys3n"
+    },
+    {
+      "type": "move",
+      "uci": "e2g3",
+      "player": "roscoe-sincero-sys"
     }
   ],
   "leaderboard": {
@@ -200,14 +205,14 @@
     "Nlxtz": 9,
     "jbuczkowski-naoko": 1,
     "quetzelcoatlus": 1,
-    "roscoe-sincero-sys": 1
+    "roscoe-sincero-sys": 2
   },
   "score": {
     "owner": 1,
     "draws": 0,
     "guests": 0
   },
-  "board_image": "chess_images/board_38_f8h7_1b498838.png",
+  "board_image": "chess_images/board_39_e2g3_1c017d11.png",
   "surrender_votes_count": 0,
   "last_surrender_voter": null,
   "game_number": 2

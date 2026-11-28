@@ -1,5 +1,5 @@
 {
-  "fen": "r2qr1k1/1p1n1pb1/2pp1np1/p4bBp/P1PP4/1BN2P2/1P2N1PP/R2Q1RK1 b - - 1 15",
+  "fen": "r2qr1k1/1p1n1pb1/3p1np1/p1p2bBp/P1PP4/1BN2P2/1P2N1PP/R2Q1RK1 w - - 0 16",
   "moves": [
     {
       "type": "move",
@@ -145,6 +145,11 @@
       "type": "move",
       "uci": "c1g5",
       "player": "quetzelcoatlus"
+    },
+    {
+      "type": "move",
+      "uci": "c6c5",
+      "player": "Krzys3n"
     }
   ],
   "leaderboard": {
@@ -161,7 +166,7 @@
     "draws": 0,
     "guests": 0
   },
-  "board_image": "chess_images/board_29_c1g5_16615172.png",
+  "board_image": "chess_images/board_30_c6c5_a9e62021.png",
   "surrender_votes_count": 0,
   "last_surrender_voter": null,
   "game_number": 2

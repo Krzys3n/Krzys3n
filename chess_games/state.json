@@ -1,5 +1,5 @@
 {
-  "fen": "r2qr1k1/pp1n1pbp/2pp1np1/5b2/P1PP4/1B3P2/1P2N1PP/RNBQ1RK1 b - - 0 13",
+  "fen": "r2qr1k1/1p1n1pbp/2pp1np1/p4b2/P1PP4/1B3P2/1P2N1PP/RNBQ1RK1 w - - 0 14",
   "moves": [
     {
       "type": "move",
@@ -125,6 +125,11 @@
       "type": "move",
       "uci": "a2a4",
       "player": "jbuczkowski-naoko"
+    },
+    {
+      "type": "move",
+      "uci": "a7a5",
+      "player": "Krzys3n"
     }
   ],
   "leaderboard": {
@@ -140,7 +145,7 @@
     "draws": 0,
     "guests": 0
   },
-  "board_image": "chess_images/board_25_a2a4_a3b8c813.png",
+  "board_image": "chess_images/board_26_a7a5_f381cbed.png",
   "surrender_votes_count": 0,
   "last_surrender_voter": null,
   "game_number": 2

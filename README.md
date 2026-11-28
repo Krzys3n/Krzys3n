@@ -3,7 +3,7 @@
 YouTube creator | Chess player | Gamer | Tech enthusiast
 
 <!-- YT_STATS_START -->
-[![Subscribers](https://img.shields.io/badge/Subscribers-14%20500-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/channel/UCQnLCzXCtC8o5pPoT59qQcQ) [![Views](https://img.shields.io/badge/Views-16%20204%20850-blue?style=for-the-badge&logo=youtube)](https://www.youtube.com/channel/UCQnLCzXCtC8o5pPoT59qQcQ) [![Videos](https://img.shields.io/badge/Videos-720-green?style=for-the-badge&logo=youtube)](https://www.youtube.com/channel/UCQnLCzXCtC8o5pPoT59qQcQ)
+[![Subscribers](https://img.shields.io/badge/Subscribers-14%20500-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/channel/UCQnLCzXCtC8o5pPoT59qQcQ) [![Views](https://img.shields.io/badge/Views-16%20246%20320-blue?style=for-the-badge&logo=youtube)](https://www.youtube.com/channel/UCQnLCzXCtC8o5pPoT59qQcQ) [![Videos](https://img.shields.io/badge/Videos-729-green?style=for-the-badge&logo=youtube)](https://www.youtube.com/channel/UCQnLCzXCtC8o5pPoT59qQcQ)
 <!-- YT_STATS_END -->
 [![Join Discord Community](https://img.shields.io/discord/1575974391693713529?label=Join%20Discord%20Community&color=5865F2&style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/SfWPRPqsaQ)
 

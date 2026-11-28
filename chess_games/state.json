@@ -1,5 +1,5 @@
 {
-  "fen": "r2qr1k1/1p1n1pb1/2pp1np1/p4b1p/P1PP4/1BN2P2/1P2N1PP/R1BQ1RK1 w - - 0 15",
+  "fen": "r2qr1k1/1p1n1pb1/2pp1np1/p4bBp/P1PP4/1BN2P2/1P2N1PP/R2Q1RK1 b - - 1 15",
   "moves": [
     {
       "type": "move",
@@ -140,6 +140,11 @@
       "type": "move",
       "uci": "h7h5",
       "player": "Krzys3n"
+    },
+    {
+      "type": "move",
+      "uci": "c1g5",
+      "player": "quetzelcoatlus"
     }
   ],
   "leaderboard": {
@@ -148,14 +153,15 @@
     "Zafkieli": 1,
     "uriel346as": 1,
     "Nlxtz": 6,
-    "jbuczkowski-naoko": 1
+    "jbuczkowski-naoko": 1,
+    "quetzelcoatlus": 1
   },
   "score": {
     "owner": 1,
     "draws": 0,
     "guests": 0
   },
-  "board_image": "chess_images/board_28_h7h5_33b8a257.png",
+  "board_image": "chess_images/board_29_c1g5_16615172.png",
   "surrender_votes_count": 0,
   "last_surrender_voter": null,
   "game_number": 2
